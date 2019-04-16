@@ -1,11 +1,40 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="woToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="SplashScreenCustom" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/colorHitam</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/colorPutih</item>
+        <item name="android:textColorPrimary">@color/colorPutih</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorHitam</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>

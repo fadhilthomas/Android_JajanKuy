@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPutih"
+    android:elevation="10dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="74dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:id="@+id/llTop"
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:orientation="vertical"
+        android:background="@color/colorPutih"
+        android:gravity="center_horizontal">
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="4dp"
+            android:background="@drawable/rounded_bg_grey" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/llTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPutih"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pilih_kategori"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorHitam"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_food"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvFood"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvFood"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/makanan_berat"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_snack"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvSnack"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSnack"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/makanan_ringan"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_hot"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvHot"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvHot"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/minuman_panas"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_cold"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvCold"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvCold"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/minuman_dingin"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_cake"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvCake"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvCake"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aneka_kue"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/colorBg"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_favourite"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@+id/tvFavourite"
+                            android:layout_marginBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvFavourite"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/favorit"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorPutih"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            card_view:cardBackgroundColor="@color/colorBg2"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mau_jajan_apa"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPutih"/>
+
+                <EditText
+                    android:id="@+id/etMenuName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:inputType="textCapWords"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:textColor="#454545"
+                    android:background="@drawable/rounded_et"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/kecamatan"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPutih"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actSellerAddressState"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:inputType="textCapWords"
+                    android:textColor="#454545"
+                    android:background="@drawable/rounded_et"/>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardBackgroundColor="@color/colorPutih"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardElevation="5dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="5dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="@string/cari"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>

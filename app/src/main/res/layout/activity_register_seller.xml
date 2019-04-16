@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_seller"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorPutih"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"/>
+
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        android:id="@+id/svDaftar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="5dp"
+                card_view:cardBackgroundColor="#fff"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <LinearLayout
+                        android:id="@+id/llInfoAkun"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:background="#fff"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/info_akun"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etSellerLicenseID"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textCapWords"
+                                android:hint="@string/nomor_izin_berjualan"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:background="@drawable/garis_2"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etSellerEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textEmailAddress"
+                                android:hint="@string/email"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorLink="#454545"
+                                android:background="@drawable/garis_2"/>
+
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/colorMerah"
+                                android:layout_marginStart="10dp"/>
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/acbCheckEmail"
+                                android:layout_width="130dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="@string/periksa_email"
+                                android:textSize="14sp"
+                                android:background="@drawable/rounded_button"
+                                android:textColor="#fff" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:hint="@string/kata_sandi"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:background="@drawable/garis_2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textColor="@color/colorMerah"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/kata_sandi_desk"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etRePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPassword"
+                                android:hint="@string/ulangi_kata_sandi"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:background="@drawable/garis_2"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:baselineAligned="false">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="10dp">
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/sebelumnya"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="@drawable/rounded_button"
+                                    android:textColor="#fff"
+                                    android:onClick="sebelumnyaDaftar"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10dp">
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/daftar"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="@drawable/rounded_button"
+                                    android:textColor="#fff"
+                                    android:onClick="registerSeller"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llInfoToko"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:background="#fff"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/info_penjual"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etSellerNIK"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textCapWords"
+                                android:hint="@string/nik_ktp"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorLink="#454545"
+                                android:background="@drawable/garis_2"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etSellerName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textCapWords"
+                                android:hint="@string/nama_lengkap"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorLink="#454545"
+                                android:background="@drawable/garis_2"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <AutoCompleteTextView
+                                android:id="@+id/actSellerAddressState"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:inputType="textCapWords"
+                                android:hint="@string/alamat_kecamatan"
+                                android:textColorHint="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorLink="#454545"
+                                android:textColor="#454545"
+                                android:background="@drawable/garis_2">
+                            </AutoCompleteTextView>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+                            <EditText
+                                android:id="@+id/etSellerPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="phone"
+                                android:hint="@string/nomor_ponsel"
+                                android:textSize="15sp"
+                                android:textColorHint="#454545"
+                                android:textColor="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorLink="#454545"
+                                android:background="@drawable/garis_2"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:baselineAligned="false">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="2dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/foto_tempat_usaha"
+                                    android:textAlignment="center"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/colorInfo"/>
+
+                                <androidx.cardview.widget.CardView
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    card_view:cardCornerRadius="3dp"
+                                    card_view:cardElevation="3dp"
+                                    card_view:cardBackgroundColor="#fff"
+                                    android:clickable="true"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardUseCompatPadding="true"
+                                    android:onClick="uploadPlace"
+                                    android:focusable="true">
+
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_gravity="center">
+
+                                        <ImageView
+                                            android:id="@+id/ivPlace"
+                                            android:background="#fff"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="100dp"
+                                            android:src="@drawable/ic_add_img"
+                                            android:scaleType="center"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignEnd="@+id/btRemovePlace"/>
+
+                                        <ImageButton
+                                            android:visibility="gone"
+                                            android:id="@+id/btRemovePlace"
+                                            android:onClick="removePlace"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:background="@drawable/ic_remove"/>
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="2dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/foto_diri"
+                                    android:textAlignment="center"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/colorInfo"/>
+
+                                <androidx.cardview.widget.CardView
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    card_view:cardCornerRadius="3dp"
+                                    card_view:cardElevation="3dp"
+                                    card_view:cardBackgroundColor="#fff"
+                                    android:clickable="true"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardUseCompatPadding="true"
+                                    android:onClick="uploadSeller"
+                                    android:focusable="true">
+
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_gravity="center">
+
+                                        <ImageView
+                                            android:id="@+id/ivSeller"
+                                            android:background="#fff"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="100dp"
+                                            android:src="@drawable/ic_add_img"
+                                            android:scaleType="center"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignEnd="@+id/btRemoveSeller"/>
+
+                                        <ImageButton
+                                            android:visibility="gone"
+                                            android:id="@+id/btRemoveSeller"
+                                            android:onClick="removeSeller"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:background="@drawable/ic_remove"/>
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:baselineAligned="false">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:visibility="invisible"
+                                android:layout_marginEnd="10dp">
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/berikutnya"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="@drawable/rounded_button"
+                                    android:textColor="#fff"
+                                    android:onClick="berikutnyaDaftar"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10dp">
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/berikutnya"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp"
+                                    android:background="@drawable/rounded_button"
+                                    android:textColor="#fff"
+                                    android:onClick="berikutnyaDaftar"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

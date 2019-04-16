@@ -1,0 +1,284 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/ic_bg" />
+
+            <TextView
+                android:id="@+id/tvJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPutih"/>
+
+            <TextView
+                android:layout_below="@+id/tvJudul"
+                android:id="@+id/tvSubJudul"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deskripsi"
+                android:textColor="@color/colorPutih"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:id="@+id/ivLogo"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_login"
+                android:layout_below="@+id/tvSubJudul"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ivLogo"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="-25dp">
+
+                <RelativeLayout
+                    android:id="@+id/transContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        card_view:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardBackgroundColor="#fff"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:orientation="vertical"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/masuk"
+                                android:textAlignment="center"
+                                android:layout_marginTop="20dp"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorPrimaryDark"/>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp">
+                                <EditText
+                                    android:id="@+id/etEmail"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textEmailAddress"
+                                    android:hint="@string/email"
+                                    android:textSize="18sp"
+                                    android:textColorHint="#454545"
+                                    android:textColor="#454545"
+                                    android:textColorHighlight="#454545"
+                                    android:textColorLink="#454545"
+                                    android:background="@drawable/garis_2"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilPass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                card_view:passwordToggleEnabled="true"
+                                card_view:passwordToggleTint="@color/colorPrimaryDark">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/etPassword"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textPassword"
+                                    android:hint="@string/kata_sandi"
+                                    android:textSize="18sp"
+                                    android:textColorHint="#454545"
+                                    android:textColor="#454545"
+                                    android:background="@drawable/garis_2" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/masuk"
+                                android:textSize="18sp"
+                                android:background="@drawable/rounded_button"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="16dp"
+                                android:elevation="5dp"
+                                android:textAllCaps="false"
+                                android:onClick="login"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:id="@+id/cvForgot"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        card_view:cardCornerRadius="20dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardBackgroundColor="#fff"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:orientation="vertical"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lupa_password"
+                                android:textAlignment="center"
+                                android:layout_marginTop="20dp"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorPrimaryDark"/>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="40dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp">
+                                <EditText
+                                    android:id="@+id/etEmailForgot"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textEmailAddress"
+                                    android:hint="@string/email"
+                                    android:textSize="18sp"
+                                    android:textColorHint="#454545"
+                                    android:textColor="#454545"
+                                    android:textColorHighlight="#454545"
+                                    android:textColorLink="#454545"
+                                    android:background="@drawable/garis_2"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/kirim_link_lupa_desk"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginTop="30dp"
+                                android:textSize="14sp"/>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/kirim_link_lupa"
+                                android:textSize="18sp"
+                                android:background="@drawable/rounded_button"
+                                android:textColor="@android:color/white"
+                                android:layout_marginTop="16dp"
+                                android:elevation="5dp"
+                                android:textAllCaps="false"
+                                android:onClick="sendReset"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/belum_daftar"
+                        android:textAlignment="center"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/daftar_sekarang"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:onClick="register"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvForgot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lupa_password"
+                    android:textAlignment="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:onClick="forgot"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
