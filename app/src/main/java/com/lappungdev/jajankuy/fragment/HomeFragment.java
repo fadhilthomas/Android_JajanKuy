@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
             mMap.setMyLocationEnabled(true);
         }
 
-        mMap.getUiSettings().setScrollGesturesEnabled(false);
+        //mMap.getUiSettings().setScrollGesturesEnabled(false);
     }
 
     private void initGoogleAPIClient() {
@@ -191,7 +191,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
 
     private void moveToCurrentLocation(LatLng currentLocation)
     {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,15));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,15));
     }
 
     private void buildGoogleApiClient() {
