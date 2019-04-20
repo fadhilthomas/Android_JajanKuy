@@ -1,0 +1,50 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipToPadding="false">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPutih"
+            android:elevation="5dp">
+
+            <Button
+                android:layout_centerInParent="true"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/app_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_button"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/ivLoctNow"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_my_location"
+                android:elevation="5dp"/>
+        </RelativeLayout>
+
+        <fragment
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/bottom_sheet"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lappungdev.jajankuy.R;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,14 +76,14 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view) {
         email = etEmail.getText().toString().trim();
-        password = etPassword.getText().toString().trim();
+        password = Objects.requireNonNull(etPassword.getText()).toString().trim();
         if(validateInput()) loginProcess(email, password);
     }
 
     private boolean validateInput() {
         boolean valid = true;
         String email = etEmail.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        String password = Objects.requireNonNull(etPassword.getText()).toString().trim();
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Snackbar.make(findViewById(android.R.id.content), "Alamat email tidak boleh kosong", Snackbar.LENGTH_LONG).show();
             valid = false;
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 
-    public void gotoForgot() {
+    private void gotoForgot() {
         cvForgot = findViewById(R.id.cvForgot);
         cvLogin = findViewById(R.id.cvLogin);
         tvForgot = findViewById(R.id.tvForgot);
@@ -136,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void gotoLogin() {
+    private void gotoLogin() {
         new Handler().postDelayed(() -> {
             TransitionManager.beginDelayedTransition(transContainer);
             visible = !visible;
@@ -204,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.fetchSignInMethodsForEmail(emailC).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 try {
-                    emailValid = task.getResult().getSignInMethods().size() == 0;
+                    emailValid = Objects.requireNonNull(task.getResult().getSignInMethods()).size() == 0;
                     if (!emailValid) {
                         sendResetPassword(emailC);
                     } else {
@@ -296,7 +297,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void saveLogin(){
         email = etEmail.getText().toString();
-        password = etPassword.getText().toString();
+        password = Objects.requireNonNull(etPassword.getText()).toString();
         SharedPreferences sharedPref= getSharedPreferences("login", 0);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("email", email);

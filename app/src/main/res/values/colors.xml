@@ -9,5 +9,6 @@
     <color name="colorMerah">#D43644</color>
     <color name="colorOrange">#F9812A</color>
     <color name="colorBg">#ffaf84</color>
+    <color name="colorBgGrey">#f1f2f5</color>
     <color name="colorBg2">#e32e21</color>
 </resources>

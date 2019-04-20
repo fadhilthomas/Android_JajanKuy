@@ -40,4 +40,15 @@
     <string name="kecamatan">Kecamatan</string>
     <string name="cari">Cari</string>
     <string name="mau_jajan_apa">Mau Jajan Apa?</string>
+    <string name="title_account">Akun</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_order">Pesanan</string>
+    <string name="akun">Akun</string>
+    <string name="ubah">Ubah</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="ketentuan">Ketentuan Layanan</string>
+    <string name="privasi">Kebijakan Privasi</string>
+    <string name="nilai">Beri Nilai Aplikasi</string>
+    <string name="keluar">Keluar</string>
+    <string name="pesanan">Pesanan</string>
 </resources>
