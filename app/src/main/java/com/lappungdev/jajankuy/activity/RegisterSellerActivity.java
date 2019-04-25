@@ -173,43 +173,43 @@ public class RegisterSellerActivity extends AppCompatActivity {
 
     private void photoUpload() {
         if (sellerPhoto) {
-            Bitmap bitmapOne = ((BitmapDrawable) ivSeller.getDrawable()).getBitmap();
-            ByteArrayOutputStream imageOneBytes = new ByteArrayOutputStream();
-            bitmapOne.compress(Bitmap.CompressFormat.JPEG, 100, imageOneBytes);
-            byte[] dataOne = imageOneBytes.toByteArray();
+            Bitmap bitmapSeller = ((BitmapDrawable) ivSeller.getDrawable()).getBitmap();
+            ByteArrayOutputStream imageBytesSeller = new ByteArrayOutputStream();
+            bitmapSeller.compress(Bitmap.CompressFormat.JPEG, 100, imageBytesSeller);
+            byte[] dataByteSeller = imageBytesSeller.toByteArray();
 
-            final StorageReference filepathOne = storageReferenceSeller.child(storagePathSeller + System.currentTimeMillis() + ".jpg");
-            UploadTask uploadTask = filepathOne.putBytes(dataOne);
+            storageReferenceSeller = storageReferenceSeller.child(storagePathSeller + System.currentTimeMillis() + ".jpg");
+            UploadTask uploadTaskSeller = storageReferenceSeller.putBytes(dataByteSeller);
 
-            uploadTask.continueWithTask(task -> {
-                if (!task.isSuccessful()) {
-                    throw Objects.requireNonNull(task.getException());
+            uploadTaskSeller.continueWithTask(taskSeller -> {
+                if (!taskSeller.isSuccessful()) {
+                    throw Objects.requireNonNull(taskSeller.getException());
                 }
-                return filepathOne.getDownloadUrl();
-            }).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult();
-                    if (downloadUri != null) {
-                        imgURLSeller = downloadUri.toString();
+                return storageReferenceSeller.getDownloadUrl();
+            }).addOnCompleteListener(taskSeller -> {
+                if (taskSeller.isSuccessful()) {
+                    Uri downloadUriSeller = taskSeller.getResult();
+                    if (downloadUriSeller != null) {
+                        imgURLSeller = downloadUriSeller.toString();
                         if (placePhoto) {
-                            Bitmap bitmapOne1 = ((BitmapDrawable) ivPlace.getDrawable()).getBitmap();
-                            ByteArrayOutputStream imageOneBytes1 = new ByteArrayOutputStream();
-                            bitmapOne1.compress(Bitmap.CompressFormat.JPEG, 100, imageOneBytes1);
-                            byte[] dataOne1 = imageOneBytes1.toByteArray();
+                            Bitmap bitmapPlace = ((BitmapDrawable) ivPlace.getDrawable()).getBitmap();
+                            ByteArrayOutputStream imageBytesPlace = new ByteArrayOutputStream();
+                            bitmapPlace.compress(Bitmap.CompressFormat.JPEG, 100, imageBytesPlace);
+                            byte[] dataOne1 = imageBytesPlace.toByteArray();
 
-                            final StorageReference filepathOne1 = storageReferenceSeller.child(storagePathSeller + System.currentTimeMillis() + ".jpg");
-                            UploadTask uploadTask1 = filepathOne1.putBytes(dataOne1);
+                            storageReferenceSeller = storageReferenceSeller.child(storagePathSeller + System.currentTimeMillis() + ".jpg");
+                            UploadTask uploadTaskPlace = storageReferenceSeller.putBytes(dataOne1);
 
-                            uploadTask1.continueWithTask(task12 -> {
-                                if (!task12.isSuccessful()) {
-                                    throw Objects.requireNonNull(task12.getException());
+                            uploadTaskPlace.continueWithTask(taskPlace -> {
+                                if (!taskPlace.isSuccessful()) {
+                                    throw Objects.requireNonNull(taskPlace.getException());
                                 }
-                                return filepathOne1.getDownloadUrl();
-                            }).addOnCompleteListener(task1 -> {
-                                if (task1.isSuccessful()) {
-                                    Uri downloadUri1 = task1.getResult();
-                                    if (downloadUri1 != null) {
-                                        imgURLPlace = downloadUri1.toString();
+                                return storageReferenceSeller.getDownloadUrl();
+                            }).addOnCompleteListener(taskPlace -> {
+                                if (taskPlace.isSuccessful()) {
+                                    Uri downloadUriPlace = taskPlace.getResult();
+                                    if (downloadUriPlace != null) {
+                                        imgURLPlace = downloadUriPlace.toString();
                                         createFirebaseUserProfile(Objects.requireNonNull(firebaseAuth.getCurrentUser()));
                                         registerSeller(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
                                         sentVerificationEmail();
@@ -254,7 +254,7 @@ public class RegisterSellerActivity extends AppCompatActivity {
         String sellerNIK = etSellerNIK.getText().toString();
         String sellerLicenseID = etSellerLicenseID.getText().toString();
         String sellerAddressState = WordUtils.capitalizeFully(actKec.getText().toString());
-        Seller seller = new Seller(sellerAddressState, sellerEmail, sellerID, sellerLicenseID, sellerNIK, sellerName, sellerPhone, imgURLSeller, imgURLSeller, id, 0);
+        Seller seller = new Seller(sellerAddressState, sellerEmail, sellerID, sellerLicenseID, "", sellerNIK, sellerName, sellerPhone, imgURLSeller, imgURLSeller, id, 0);
         databaseReferenceSeller.child(id).setValue(seller);
     }
 

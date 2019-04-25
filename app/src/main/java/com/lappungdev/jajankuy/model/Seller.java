@@ -5,6 +5,7 @@ public class Seller {
     private String sellerEmail;
     private String sellerID;
     private String sellerLicenseID;
+    private String sellerLocation;
     private String sellerNIK;
     private String sellerName;
     private String sellerPhone;
@@ -13,19 +14,21 @@ public class Seller {
     private String sellerZID;
     private int sellerMeter;
 
-    public Seller(String sellerAddressState, String sellerEmail, String sellerID, String sellerLicenseID, String sellerNIK, String sellerName, String sellerPhone, String sellerPhotoID, String sellerPhotoPlace, String sellerZID, int sellerMeter) {
-        this.sellerAddressState = sellerAddressState;
-        this.sellerEmail = sellerEmail;
-        this.sellerID = sellerID;
-        this.sellerLicenseID = sellerLicenseID;
-        this.sellerNIK = sellerNIK;
-        this.sellerName = sellerName;
-        this.sellerPhone = sellerPhone;
-        this.sellerPhotoID = sellerPhotoID;
-        this.sellerPhotoPlace = sellerPhotoPlace;
-        this.sellerZID = sellerZID;
-        this.sellerMeter = sellerMeter;
+    public Seller(String sellerAddressState, String sellerEmail, String sellerID, String sellerLicenseID, String sellerLocation, String sellerNIK, String sellerName, String sellerPhone, String sellerPhotoID, String sellerPhotoPlace, String sellerZID, int sellerMeter) {
+        this.setSellerAddressState(sellerAddressState);
+        this.setSellerEmail(sellerEmail);
+        this.setSellerID(sellerID);
+        this.setSellerLicenseID(sellerLicenseID);
+        this.setSellerLocation(sellerLocation);
+        this.setSellerNIK(sellerNIK);
+        this.setSellerName(sellerName);
+        this.setSellerPhone(sellerPhone);
+        this.setSellerPhotoID(sellerPhotoID);
+        this.setSellerPhotoPlace(sellerPhotoPlace);
+        this.setSellerZID(sellerZID);
+        this.setSellerMeter(sellerMeter);
     }
+
 
     public String getSellerAddressState() {
         return sellerAddressState;
@@ -57,6 +60,14 @@ public class Seller {
 
     public void setSellerLicenseID(String sellerLicenseID) {
         this.sellerLicenseID = sellerLicenseID;
+    }
+
+    public String getSellerLocation() {
+        return sellerLocation;
+    }
+
+    public void setSellerLocation(String sellerLocation) {
+        this.sellerLocation = sellerLocation;
     }
 
     public String getSellerNIK() {

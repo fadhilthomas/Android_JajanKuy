@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lappungdev.jajankuy">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -23,47 +22,56 @@
     <application
         android:name=".model.Multi_Dex"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:fullBackupContent="@xml/backup_descriptor">
-
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
+        tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activity.MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:name=".activity.CategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/woToolbar" />
         <activity
-            android:name="com.lappungdev.jajankuy.activity.MainActivity"
+            android:name=".activity.EditMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/woToolbar" />
+        <activity
+            android:name=".activity.KatalogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/woToolbar" />
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.lappungdev.jajankuy.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/woToolbar" />
         <activity
-            android:name="com.lappungdev.jajankuy.activity.RegisterSellerActivity"
+            android:name=".activity.RegisterSellerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/woToolbar" />
         <activity
-            android:name="com.lappungdev.jajankuy.activity.SplashActivity"
+            android:name=".activity.RegisterUserActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/woToolbar" />
+        <activity
+            android:name=".activity.AddMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/woToolbar" />
+        <activity
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreenCustom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

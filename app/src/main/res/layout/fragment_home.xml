@@ -42,6 +42,163 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
+        <LinearLayout
+            android:id="@+id/llSeller"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPutih"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kelola_menu"
+                android:textSize="18sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorHitam"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        android:onClick="tambahMenu"
+                        card_view:cardBackgroundColor="@color/colorPutih"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_add"
+                                android:layout_centerHorizontal="true"
+                                android:layout_above="@+id/tvFood"
+                                android:layout_marginBottom="5dp"/>
+
+                            <TextView
+                                android:id="@+id/tvFood"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tambah_menu"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorHijau"/>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        android:onClick="katalogMenu"
+                        card_view:cardBackgroundColor="@color/colorPutih"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_edit"
+                                android:layout_centerHorizontal="true"
+                                android:layout_above="@+id/tvSnack"
+                                android:layout_marginBottom="5dp"/>
+
+                            <TextView
+                                android:id="@+id/tvSnack"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/edit_menu"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBiru"/>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_weight="1"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        android:onClick="katalogMenu"
+                        card_view:cardBackgroundColor="@color/colorPutih"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_delete"
+                                android:layout_centerHorizontal="true"
+                                android:layout_above="@+id/tvHot"
+                                android:layout_marginBottom="5dp"/>
+
+                            <TextView
+                                android:id="@+id/tvHot"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/hapus_menu"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorMerah"/>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
     <include

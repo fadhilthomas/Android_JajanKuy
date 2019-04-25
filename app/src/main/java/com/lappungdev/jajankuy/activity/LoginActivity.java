@@ -157,7 +157,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        startActivity(new Intent(LoginActivity.this, RegisterSellerActivity.class));
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+        alertDialogBuilder
+                .setCancelable(true)
+                .setPositiveButton("Pembeli", (dialog, id) -> startActivity(new Intent(LoginActivity.this, RegisterUserActivity.class)))
+                .setNegativeButton("Penjual", (dialog, id) -> startActivity(new Intent(LoginActivity.this, RegisterSellerActivity.class)));
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+        TextView pesan = alertDialog.findViewById(android.R.id.message);
+        Objects.requireNonNull(pesan).setTextSize(15);
+
+        Button b = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        b.setTextColor(getResources().getColor(R.color.colorHitam));
+
+        Button c = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        c.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
     private boolean isLoggedIn() {

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">JajanKuy</string>
-    <string name="title_activity_maps">Map</string>
     <string name="belum_daftar">Ingin bergabung dengan kami?</string>
     <string name="daftar_sekarang">Daftar sekarang</string>
     <string name="deskripsi">Jujur Biar Manjur</string>
@@ -51,4 +50,32 @@
     <string name="nilai">Beri Nilai Aplikasi</string>
     <string name="keluar">Keluar</string>
     <string name="pesanan">Pesanan</string>
+    <string name="daftar_pengguna">Daftar Pengguna</string>
+    <string name="info_pengguna">Info Pengguna</string>
+    <string name="kelola_menu">Kelola Menu</string>
+    <string name="edit_menu">Edit\nMenu</string>
+    <string name="tambah_menu">Tambah\nMenu</string>
+    <string name="hapus_menu">Hapus\nMenu</string>
+    <string name="tambah_menu_title">Tambah Menu</string>
+    <string name="info_menu">Info Menu</string>
+    <string name="nama_menu">Nama Menu</string>
+    <string name="harga_menu">Harga Menu</string>
+    <string name="foto_menu">Foto Menu</string>
+    <string name="pasang_menu">Pasang Menu</string>
+    <string name="kategori">Kategori</string>
+    <string name="maaf_menu_tidak_ditemukan">Maaf, menu tidak ditemukan.</string>
+    <string name="katalog_menu">Katalog Menu</string>
+
+    <string-array name="kategori_menu">
+        <item>Makanan Berat</item>
+        <item>Makanan Ringan</item>
+        <item>Makanan Panas</item>
+        <item>Makanan Dingin</item>
+        <item>Aneka Kue</item>
+    </string-array>
+
+    <string-array name="urut">
+        <item>Jarak Terdekat</item>
+        <item>Harga Termurah</item>
+    </string-array>
 </resources>

@@ -4,6 +4,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/rlUser"
     android:background="@color/colorPutih"
     android:elevation="10dp"
     app:behavior_hideable="true"
@@ -66,6 +67,7 @@
                     android:layout_height="match_parent"
                     card_view:cardCornerRadius="10dp"
                     card_view:cardElevation="5dp"
+                    android:onClick="makananBerat"
                     card_view:cardBackgroundColor="@color/colorBg"
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardUseCompatPadding="true">
@@ -104,6 +106,7 @@
                     android:layout_height="match_parent"
                     card_view:cardCornerRadius="10dp"
                     card_view:cardElevation="5dp"
+                    android:onClick="makananRingan"
                     card_view:cardBackgroundColor="@color/colorBg"
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardUseCompatPadding="true">
@@ -142,6 +145,7 @@
                     android:layout_height="match_parent"
                     card_view:cardCornerRadius="10dp"
                     card_view:cardElevation="5dp"
+                    android:onClick="minumanPanas"
                     card_view:cardBackgroundColor="@color/colorBg"
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardUseCompatPadding="true">
@@ -188,6 +192,7 @@
                     android:layout_height="match_parent"
                     card_view:cardCornerRadius="10dp"
                     card_view:cardElevation="5dp"
+                    android:onClick="minumanDingin"
                     card_view:cardBackgroundColor="@color/colorBg"
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardUseCompatPadding="true">
@@ -226,6 +231,7 @@
                     android:layout_height="match_parent"
                     card_view:cardCornerRadius="10dp"
                     card_view:cardElevation="5dp"
+                    android:onClick="anekaKue"
                     card_view:cardBackgroundColor="@color/colorBg"
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardUseCompatPadding="true">

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -295,5 +296,43 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onLocationChanged(Location location) {
 
+    }
+
+    public void tambahMenu(View view) {
+        startActivity(new Intent(this, AddMenuActivity.class));
+    }
+
+    public void katalogMenu(View view) {
+        startActivity(new Intent(this, KatalogActivity.class));
+    }
+
+    public void makananBerat(View view) {
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categoryIntent.putExtra("menuCategory","Makanan Berat");
+        startActivity(categoryIntent);
+    }
+
+    public void makananRingan(View view) {
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categoryIntent.putExtra("menuCategory","Makanan Ringan");
+        startActivity(categoryIntent);
+    }
+
+    public void minumanPanas(View view) {
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categoryIntent.putExtra("menuCategory","Minuman Panas");
+        startActivity(categoryIntent);
+    }
+
+    public void minumanDingin(View view) {
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categoryIntent.putExtra("menuCategory","Minuman Dingin");
+        startActivity(categoryIntent);
+    }
+
+    public void anekaKue(View view) {
+        Intent categoryIntent = new Intent(this, CategoryActivity.class);
+        categoryIntent.putExtra("menuCategory","Aneka Kue");
+        startActivity(categoryIntent);
     }
 }
