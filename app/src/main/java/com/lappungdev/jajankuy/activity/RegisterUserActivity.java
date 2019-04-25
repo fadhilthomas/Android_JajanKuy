@@ -37,36 +37,47 @@ import butterknife.ButterKnife;
 
 public class RegisterUserActivity extends AppCompatActivity {
 
-    @BindView(R.id.acbCheckEmail) AppCompatButton acbCheckEmail;
-    @BindView(R.id.etPassword) EditText etPassword;
-    @BindView(R.id.etRePassword) EditText etRePassword;
-    @BindView(R.id.etUserEmail) EditText etUserEmail;
-    @BindView(R.id.etUserName) EditText etUserName;
-    @BindView(R.id.etUserPhone) EditText etUserPhone;
-    @BindView(R.id.llInfoAkun) LinearLayout llInfoAkun;
-    @BindView(R.id.llInfoUser) LinearLayout llInfoUser;
-    @BindView(R.id.svDaftar) ScrollView svDaftar;
-    @BindView(R.id.tvEmail) TextView tvEmail;
-    private DatabaseReference databaseReferenceUser;
+    private static final String databasePathUser = "jajankuy_db/user";
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    @BindView(R.id.acbCheckEmail)
+    AppCompatButton acbCheckEmail;
+    @BindView(R.id.etPassword)
+    EditText etPassword;
+    @BindView(R.id.etRePassword)
+    EditText etRePassword;
+    @BindView(R.id.etUserEmail)
+    EditText etUserEmail;
+    @BindView(R.id.etUserName)
+    EditText etUserName;
+    @BindView(R.id.etUserPhone)
+    EditText etUserPhone;
+    @BindView(R.id.llInfoAkun)
+    LinearLayout llInfoAkun;
+    @BindView(R.id.llInfoUser)
+    LinearLayout llInfoUser;
+    @BindView(R.id.svDaftar)
+    ScrollView svDaftar;
+    @BindView(R.id.tvEmail)
+    TextView tvEmail;
+    private DatabaseReference databaseReferenceUser;
     private ProgressDialog progressDialog;
     private Typeface custom_font;
     private boolean emailClicked = false;
     private boolean emailValid = true;
-    private static final String databasePathUser = "jajankuy_db/user";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
         ButterKnife.bind(this);
-        
+
         databaseReferenceUser = FirebaseDatabase.getInstance().getReference(databasePathUser);
         progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
-        custom_font = Typeface.createFromAsset(getAssets(),  "fonts/font.ttf");
+        custom_font = Typeface.createFromAsset(getAssets(), "fonts/font.ttf");
         etUserEmail.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -74,7 +85,8 @@ public class RegisterUserActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         acbCheckEmail.setOnClickListener(v -> {
@@ -83,9 +95,9 @@ public class RegisterUserActivity extends AppCompatActivity {
         });
     }
 
-    private void checkEmailProcess(String email){
+    private void checkEmailProcess(String email) {
         firebaseAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
+            if (task.isSuccessful()) {
                 emailValid = Objects.requireNonNull(Objects.requireNonNull(task.getResult()).getSignInMethods()).size() == 0;
                 if (emailValid) {
                     tvEmail.setText(R.string.email_tersedia);
@@ -146,7 +158,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         user.updateProfile(addProfileName);
     }
 
-    private void registerUser(String id){
+    private void registerUser(String id) {
         String userName = WordUtils.capitalizeFully(etUserName.getText().toString());
         String userID = String.format("USR-%s", Long.toHexString(System.currentTimeMillis()).toUpperCase());
         String userEmail = etUserEmail.getText().toString();
@@ -155,13 +167,13 @@ public class RegisterUserActivity extends AppCompatActivity {
         databaseReferenceUser.child(id).setValue(User);
     }
 
-    private void sentVerificationEmail(){
+    private void sentVerificationEmail() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
             user.sendEmailVerification()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Snackbar.make(svDaftar,"Email verifikasi berhasil dikirim.", Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(svDaftar, "Email verifikasi berhasil dikirim.", Snackbar.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -169,7 +181,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     private void onSignupSuccess() {
         FirebaseAuth.getInstance().signOut();
-        Snackbar.make(svDaftar,"Daftar berhasil.", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(svDaftar, "Daftar berhasil.", Snackbar.LENGTH_SHORT).show();
         setResult(RESULT_OK, null);
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -193,34 +205,34 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etUserEmail.setError("Alamat email tidak valid");
-            Snackbar.make(svDaftar,"Alamat email tidak valid.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Alamat email tidak valid.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etUserEmail.setError(null);
         }
 
-        if ((validatePass(password))&&(password.length() > 8)){
+        if ((validatePass(password)) && (password.length() > 8)) {
             etPassword.setError(null);
         } else {
             etPassword.setError("Kata sandi harus lebih dari 8 karakter dan alfanumerik");
-            Snackbar.make(svDaftar,"Kata sandi harus lebih dari 8 karakter dan alfanumerik.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Kata sandi harus lebih dari 8 karakter dan alfanumerik.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         }
         if (rePassword.isEmpty() || !(rePassword.equals(password))) {
             etRePassword.setError("Kata sandi tidak cocok");
-            Snackbar.make(svDaftar,"Kata sandi tidak cocok.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Kata sandi tidak cocok.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etRePassword.setError(null);
         }
 
-        if(!emailValid){
+        if (!emailValid) {
             valid = false;
-            Snackbar.make(svDaftar,"Email sudah terdaftar, gunakan email yang lain.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Email sudah terdaftar, gunakan email yang lain.", Snackbar.LENGTH_SHORT).show();
         }
-        if(!emailClicked){
+        if (!emailClicked) {
             valid = false;
-            Snackbar.make(svDaftar,"Klik tombol periksa email untuk memeriksa email valid.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Klik tombol periksa email untuk memeriksa email valid.", Snackbar.LENGTH_SHORT).show();
         }
         return valid;
     }
@@ -232,7 +244,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         if (name.isEmpty()) {
             etUserName.setError("Nama Lengkap belum diisi");
-            Snackbar.make(svDaftar,"Nama Lengkap belum diisi.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Nama Lengkap belum diisi.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etUserName.setError(null);
@@ -240,7 +252,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
         if (phone.isEmpty()) {
             etUserPhone.setError("Nomor Ponsel belum diisi");
-            Snackbar.make(svDaftar,"Nomor Ponsel belum diisi.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svDaftar, "Nomor Ponsel belum diisi.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etUserPhone.setError(null);
@@ -254,7 +266,7 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     public void berikutnyaDaftar(View view) {
-        if(validateUser()) {
+        if (validateUser()) {
             llInfoUser.setVisibility(View.GONE);
             llInfoAkun.setVisibility(View.VISIBLE);
         }

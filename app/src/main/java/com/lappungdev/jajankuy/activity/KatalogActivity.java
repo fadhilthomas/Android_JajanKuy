@@ -1,15 +1,15 @@
 package com.lappungdev.jajankuy.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,20 +30,20 @@ import butterknife.ButterKnife;
 
 public class KatalogActivity extends AppCompatActivity {
 
+    private static final String databasePathMenu = "jajankuy_db/menu";
+    private static final String databasePathSeller = "jajankuy_db/seller";
+    @SuppressLint("StaticFieldLeak")
+    public static RecyclerViewAdapterKatalog adapter;
+    @SuppressLint("StaticFieldLeak")
+    public static RelativeLayout svKatalog;
+    @BindView(R.id.pb)
+    ProgressBar pbLoad;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
     private DatabaseReference databaseReferenceMenu;
     private DatabaseReference databaseReferenceSeller;
     private List<Menu> menuList = new ArrayList<>();
-    @BindView(R.id.pb) ProgressBar pbLoad;
-    @BindView(R.id.recyclerView) RecyclerView recyclerView;
     private String sellerName = "";
-    private static final String databasePathMenu = "jajankuy_db/menu";
-    private static final String databasePathSeller = "jajankuy_db/seller";
-
-    @SuppressLint("StaticFieldLeak")
-    public static RecyclerViewAdapterKatalog adapter ;
-
-    @SuppressLint("StaticFieldLeak")
-    public static RelativeLayout svKatalog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class KatalogActivity extends AppCompatActivity {
         getSellerInfo();
     }
 
-    private void getSellerInfo(){
+    private void getSellerInfo() {
         databaseReferenceSeller = FirebaseDatabase.getInstance().getReference(databasePathSeller);
         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Query query = databaseReferenceSeller.child(id);
@@ -77,21 +77,21 @@ public class KatalogActivity extends AppCompatActivity {
         });
     }
 
-    private void getSellerMenu(String name){
+    private void getSellerMenu(String name) {
         databaseReferenceMenu = FirebaseDatabase.getInstance().getReference(databasePathMenu);
         Query queryMenu = databaseReferenceMenu.orderByChild("menuSellerName").equalTo(name);
         queryMenu.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot menuSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot menuSnapshot : dataSnapshot.getChildren()) {
                     Menu menuInfo = menuSnapshot.getValue(Menu.class);
                     menuList.add(menuInfo);
                 }
                 adapter = new RecyclerViewAdapterKatalog(getApplicationContext(), menuList);
                 try {
                     recyclerView.setAdapter(adapter);
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
                 pbLoad.setVisibility(View.GONE);

@@ -59,12 +59,12 @@ public class RecyclerViewAdapterCategory extends RecyclerView.Adapter<RecyclerVi
         return new ViewHolder(view);
     }
 
-    private String getMoney(String str2){
+    private String getMoney(String str2) {
         StringBuilder str = new StringBuilder(str2);
-        int idx = str.length()-3;
+        int idx = str.length() - 3;
 
-        while(idx > 0){
-            str.insert(idx,".");
+        while (idx > 0) {
+            str.insert(idx, ".");
             idx = idx - 3;
         }
 
@@ -92,7 +92,7 @@ public class RecyclerViewAdapterCategory extends RecyclerView.Adapter<RecyclerVi
                     DecimalFormat kl = new DecimalFormat("#.#");
                     kl.setRoundingMode(RoundingMode.CEILING);
                     Double kilo = haversine(bLat, bLong, Double.parseDouble(String.valueOf(loctNow.latitude)), Double.parseDouble(String.valueOf(loctNow.longitude)));
-                    int menuMeter = (int)(kilo * 1000);
+                    int menuMeter = (int) (kilo * 1000);
                     if (menuMeter > 100) {
                         menuDistance = kl.format(kilo) + " km";
                     } else {
@@ -131,6 +131,18 @@ public class RecyclerViewAdapterCategory extends RecyclerView.Adapter<RecyclerVi
         return menuList.size();
     }
 
+    private double haversine(double lat1, double lon1, double lat2, double lon2) {
+        final double R = 6378.16;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        lat1 = Math.toRadians(lat1);
+        lat2 = Math.toRadians(lat2);
+
+        double a = Math.pow(Math.sin(dLat / 2), 2) + Math.pow(Math.sin(dLon / 2), 2) * Math.cos(lat1) * Math.cos(lat2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return R * c;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivMenuPhoto, ivMenuLoad;
@@ -147,17 +159,5 @@ public class RecyclerViewAdapterCategory extends RecyclerView.Adapter<RecyclerVi
             tvSellerName = itemView.findViewById(R.id.tvSellerName);
             tvMenuMeter = itemView.findViewById(R.id.tvMenuMeter);
         }
-    }
-
-    private double haversine(double lat1, double lon1, double lat2, double lon2){
-        final double R = 6378.16;
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
-        lat1 = Math.toRadians(lat1);
-        lat2 = Math.toRadians(lat2);
-
-        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon /2),2) * Math.cos(lat1) * Math.cos(lat2);
-        double c = 2 * Math.asin(Math.sqrt(a));
-        return R * c ;
     }
 }

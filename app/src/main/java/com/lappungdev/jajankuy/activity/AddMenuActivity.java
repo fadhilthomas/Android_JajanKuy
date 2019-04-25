@@ -53,15 +53,26 @@ import butterknife.ButterKnife;
 
 public class AddMenuActivity extends AppCompatActivity {
 
-    @BindView(R.id.etMenuName) EditText etMenuName;
-    @BindView(R.id.etMenuPrice) EditText etMenuPrice;
-    @BindView(R.id.spMenuCategory) Spinner spMenuCategory;
-    @BindView(R.id.btRemoveMenu) ImageButton btRemoveMenu;
-    @BindView(R.id.ivMenu) ImageView ivMenu;
-    @BindView(R.id.svMenu) ScrollView svMenu;
+    private static final String databasePathMenu = "jajankuy_db/menu";
+    private static final String databasePathSeller = "jajankuy_db/seller";
+    private static final int cameraRequestCode = 100;
+    private static final int imageRequestCodeMenu = 7;
+    private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private final String storagePathMenu = "menu/";
+    @BindView(R.id.etMenuName)
+    EditText etMenuName;
+    @BindView(R.id.etMenuPrice)
+    EditText etMenuPrice;
+    @BindView(R.id.spMenuCategory)
+    Spinner spMenuCategory;
+    @BindView(R.id.btRemoveMenu)
+    ImageButton btRemoveMenu;
+    @BindView(R.id.ivMenu)
+    ImageView ivMenu;
+    @BindView(R.id.svMenu)
+    ScrollView svMenu;
     private DatabaseReference databaseReferenceMenu;
     private DatabaseReference databaseReferenceSeller;
-    private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private ProgressDialog progressDialog;
     private StorageReference storageReferenceMenu;
     private String imgURLMenu;
@@ -69,13 +80,7 @@ public class AddMenuActivity extends AppCompatActivity {
     private String menuState;
     private String menuSellerName;
     private boolean menuPhoto;
-    private final String storagePathMenu = "menu/";
     private Typeface custom_font;
-    private static final String databasePathMenu = "jajankuy_db/menu";
-    private static final String databasePathSeller = "jajankuy_db/seller";
-    private static final int cameraRequestCode = 100;
-    private static final int imageRequestCodeMenu = 7;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,18 +97,18 @@ public class AddMenuActivity extends AppCompatActivity {
         databaseReferenceMenu = FirebaseDatabase.getInstance().getReference(databasePathMenu);
         storageReferenceMenu = FirebaseStorage.getInstance().getReference();
         progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
-        custom_font = Typeface.createFromAsset(getAssets(),  "fonts/font.ttf");
+        custom_font = Typeface.createFromAsset(getAssets(), "fonts/font.ttf");
     }
 
     private boolean validateMenu() {
         boolean valid = true;
         String menuName = WordUtils.capitalizeFully(etMenuName.getText().toString());
-        String menuPrice = etMenuPrice.getText().toString().replace(".","").trim();
+        String menuPrice = etMenuPrice.getText().toString().replace(".", "").trim();
         String menuCategory = spMenuCategory.getSelectedItem().toString();
 
         if (menuName.isEmpty()) {
             etMenuName.setError("Nama Menu belum diisi");
-            Snackbar.make(svMenu,"Nama Menu belum diisi.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svMenu, "Nama Menu belum diisi.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etMenuName.setError(null);
@@ -111,7 +116,7 @@ public class AddMenuActivity extends AppCompatActivity {
 
         if (menuPrice.isEmpty()) {
             etMenuPrice.setError("Harga Menu belum diisi");
-            Snackbar.make(svMenu,"Harga Menu belum diisi.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svMenu, "Harga Menu belum diisi.", Snackbar.LENGTH_SHORT).show();
             valid = false;
         } else {
             etMenuPrice.setError(null);
@@ -122,17 +127,17 @@ public class AddMenuActivity extends AppCompatActivity {
             valid = false;
         }
 
-        if(!menuPhoto){
+        if (!menuPhoto) {
             valid = false;
-            Snackbar.make(svMenu,"Foto Menu belum dipilih.", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(svMenu, "Foto Menu belum dipilih.", Snackbar.LENGTH_SHORT).show();
         }
         return valid;
     }
 
-    private void checkPermission(){
+    private void checkPermission() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.CAMERA}, cameraRequestCode);
+                == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, cameraRequestCode);
         }
     }
 
@@ -177,7 +182,7 @@ public class AddMenuActivity extends AppCompatActivity {
     }
 
     public void pasangMenu(View view) {
-        if(validateMenu()){
+        if (validateMenu()) {
             progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Proses ...");
@@ -210,12 +215,12 @@ public class AddMenuActivity extends AppCompatActivity {
         }
     }
 
-    private void saveMenuDB(){
+    private void saveMenuDB() {
         String menuID = String.format("MNU-%s", Long.toHexString(System.currentTimeMillis()).toUpperCase());
         String menuTimestamp = String.valueOf(System.currentTimeMillis());
         String menuZID = String.valueOf((9999999999999L + (-1 * Long.valueOf(menuTimestamp))));
         String menuName = WordUtils.capitalizeFully(etMenuName.getText().toString());
-        String menuPrice = etMenuPrice.getText().toString().replace(".","").trim();
+        String menuPrice = etMenuPrice.getText().toString().replace(".", "").trim();
         String menuCategory = spMenuCategory.getSelectedItem().toString();
 
         Menu menu = new Menu(menuCategory, menuID, menuName, imgURLMenu, menuPrice, menuSellerName, sellerZID, menuState, menuTimestamp, menuZID, 0);
@@ -239,10 +244,11 @@ public class AddMenuActivity extends AppCompatActivity {
                     Button b = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
                     b.setTypeface(custom_font);
                     b.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                },2000)).addOnFailureListener(e -> {});
+                }, 2000)).addOnFailureListener(e -> {
+        });
     }
 
-    private void getSellerInfo(){
+    private void getSellerInfo() {
         databaseReferenceSeller = FirebaseDatabase.getInstance().getReference(databasePathSeller);
         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Query query = databaseReferenceSeller.child(id);
@@ -285,9 +291,8 @@ public class AddMenuActivity extends AppCompatActivity {
                 btRemoveMenu.setVisibility(View.VISIBLE);
                 menuPhoto = true;
 
-                Snackbar.make(svMenu,"Foto berhasil dipilih.", Snackbar.LENGTH_SHORT).show();
-            }
-            catch (IOException e) {
+                Snackbar.make(svMenu, "Foto berhasil dipilih.", Snackbar.LENGTH_SHORT).show();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -310,7 +315,7 @@ public class AddMenuActivity extends AppCompatActivity {
                     menuPhoto = true;
                     Snackbar.make(svMenu, "Foto berhasil dipilih.", Snackbar.LENGTH_SHORT).show();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

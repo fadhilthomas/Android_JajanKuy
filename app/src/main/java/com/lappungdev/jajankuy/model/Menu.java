@@ -14,7 +14,8 @@ public class Menu {
     private String menuZID;
     private int menuMeter;
 
-    public Menu(){}
+    public Menu() {
+    }
 
     public Menu(String menuCategory, String menuID, String menuName, String menuPhoto, String menuPrice, String menuSellerName, String menuSellerZID, String menuState, String menuTimestamp, String menuZID, int menuMeter) {
         this.setMenuCategory(menuCategory);

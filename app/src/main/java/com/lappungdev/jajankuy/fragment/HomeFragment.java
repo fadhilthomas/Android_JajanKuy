@@ -60,19 +60,36 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
-    @BindView(R.id.llSeller) LinearLayout llSeller;
-    @BindView(R.id.rlUser) RelativeLayout rlUser;
-    @BindView(R.id.actSellerAddressState) AutoCompleteTextView actSellerAddressState;
-    private GoogleApiClient mGoogleApiClient;
-    private GoogleMap mMap;
-    public static LatLng loctNow;
-    public String sellerUid = "";
     private static final String databasePathSeller = "jajankuy_db/seller";
     private static final String broadcastAction = "android.location.PROVIDERS_CHANGED";
     private static final int accessFineLocationIntent = 3;
     private static final int requestCheckSettings = 1;
-    private final String[] kec = {"Abung Barat, Lampung Utara","Abung Kunang, Lampung Utara","Abung Pekurun, Lampung Utara","Abung Selatan, Lampung Utara","Abung Semuli, Lampung Utara","Abung Surakarta, Lampung Utara","Abung Tengah, Lampung Utara","Abung Timur, Lampung Utara","Abung Tinggi, Lampung Utara","Adiluwih, Pringsewu","Air Hitam, Lampung Barat","Air Naningan, Tanggamus","Ambarawa, Pringsewu","Anak Ratu Aji, Lampung Tengah","Anak Tuha, Lampung Tengah","Bahuga, Way Kanan","Bakauheni, Lampung Selatan","Balik Bukit, Lampung Barat","Bandar Mataram, Lampung Tengah","Bandar Negeri Semuong, Tanggamus","Bandar Negeri Suoh, Lampung Barat","Bandar Sribhawono, Lampung Timur","Bandar Surabaya, Lampung Tengah","Bangunrejo, Lampung Tengah","Banjar Agung, Tulang Bawang","Banjar Baru, Tulang Bawang","Banjar Margo, Tulang Bawang","Banjit, Way Kanan","Banyumas, Pringsewu","Baradatu, Way Kanan","Batanghari Nuban, Lampung Timur","Batanghari, Lampung Timur","Batu Brak, Lampung Barat","Batu Ketulis, Lampung Barat","Bekri, Lampung Tengah","Belalau, Lampung Barat","Bengkunat Belimbing, Pesisir Barat","Bengkunat, Pesisir Barat","Blambangan Pagar, Lampung Utara","Blambangan Umpu, Way Kanan","Braja Slebah, Lampung Timur","Buay Bahuga, Way Kanan","Bukit Kemuning, Lampung Utara","Bulok, Tanggamus","Bumi Agung, Lampung Timur","Bumi Agung, Way Kanan","Bumi Nabung, Lampung Tengah","Bumi Ratu Nuban, Lampung Tengah","Bumi Waras, Bandar Lampung","Bunga Mayang, Lampung Utara","Candipuro, Lampung Selatan","Cukuh Balak, Tanggamus","Dente Teladas, Tulang Bawang","Enggal, Bandar Lampung","Gading Rejo, Pringsewu","Gadingrejo, Pringsewu","Gedong Tataan, Pesawaran","Gedung Aji Baru, Tulang Bawang","Gedung Aji, Tulang Bawang","Gedung Meneng, Tulang Bawang","Gedung Surian, Lampung Barat","Gisting, Tanggamus","Gunung Agung, Tulang Bawang Barat","Gunung Labuhan, Way Kanan","Gunung Pelindung, Lampung Timur","Gunung Sugih, Lampung Tengah","Gunung Terang, Tulang Bawang Barat","Hulu Sungkai, Lampung Utara","Jabung, Lampung Timur","Jati Agung, Lampung Selatan","Kalianda, Lampung Selatan","Kalirejo, Lampung Tengah","Karya Penggawa, Pesisir Barat","Kasui, Way Kanan","Katibung, Lampung Selatan","Kebun Tebu, Lampung Barat","Kedamaian, Bandar Lampung","Kedaton, Bandar Lampung","Kedondong, Pesawaran","Kelumbayan Barat, Tanggamus","Kelumbayan, Tanggamus","Kemiling, Bandar Lampung","Ketapang, Lampung Selatan","Ketimbang","Kota Agung Barat, Tanggamus","Kota Agung Pusat, Tanggamus","Kota Agung Timur, Tanggamus","Kota Gajah, Lampung Tengah","Kotaagung, Tanggamus","Kotabumi Kota, Lampung Utara","Kotabumi Selatan, Lampung Utara","Kotabumi Utara, Lampung Utara","Krui Selatan, Pesisir Barat","Labuhan Maringgai, Lampung Timur","Labuhan Ratu, Bandar Lampung","Labuhan Ratu, Lampung Timur","Lambu Kibang, Tulang Bawang Barat","Langkapura, Bandar Lampung","Lemong, Pesisir Barat","Limau, Tanggamus","Lumbok Seminung, Lampung Barat","Marga Punduh, Pesawaran","Marga Sekampung, Lampung Timur","Margatiga, Lampung Timur","Mataram Baru, Lampung Timur","Melinting, Lampung Timur","Menggala Timur, Tulang Bawang","Menggala, Tulang Bawang","Meraksa Aji, Tulang Bawang","Merbau Mataram, Lampung Selatan","Mesuji Timur, Mesuji","Mesuji, Mesuji","Metro Barat, Metro","Metro Kibang, Lampung Timur","Metro Pusat, Metro","Metro Selatan, Metro","Metro Timur, Metro","Metro Utara, Metro","Muara Sungkai, Lampung Utara","Natar, Lampung Selatan","Negara Batin, Way Kanan","Negeri Agung, Way Kanan","Negeri Besar, Way Kanan","Negeri Katon, Pesawaran","Ngambur, Pesisir Barat","Padang Cermin, Pesawaran","Padang Ratu, Lampung Tengah","Pagar Dewa, Lampung Barat","Pagar Dewa, Tulang Bawang Barat","Pagelaran Utara, Pringsewu","Pagelaran, Pringsewu","Pakuan Ratu, Way Kanan","Palas, Lampung Selatan","Panca Jaya, Mesuji","Panjang, Bandar Lampung","Pardasuka, Pringsewu","Pasir Sakti, Lampung Timur","Pekalongan, Lampung Timur","Pematang Sawa, Tanggamus","Penawar Aji, Tulang Bawang","Penawar Tama, Tulang Bawang","Penengahan, Lampung Selatan","Pesisir Selatan, Pesisir Barat","Pesisir Tengah, Pesisir Barat","Pesisir Utara, Pesisir Barat","Pringsewu, Pringsewu","Pubian, Lampung Tengah","Pugung, Tanggamus","Pulau Panggung, Tanggamus","Pulau Pisang, Pesisir Barat","Punduh Pidada, Pesawaran","Punggur, Lampung Tengah","Purbolinggo, Lampung Timur","Putra Rumbia, Lampung Tengah","Rajabasa, Bandar Lampung","Rajabasa, Lampung Selatan","Raman Utara, Lampung Timur","Rawa Jitu Utara, Mesuji","Rawa Pitu, Tulang Bawang","Rawajitu Selatan, Tulang Bawang","Rawajitu Timur, Tulang Bawang","Rebang Tangkas, Way Kanan","Rumbia, Lampung Tengah","Sekampung Udik, Lampung Timur","Sekampung, Lampung Timur","Sekincau, Lampung Barat","Selagai Lingga, Lampung Tengah","Semaka, Tanggamus","Sendang Agung, Lampung Tengah","Seputih Agung, Lampung Tengah","Seputih Banyak, Lampung Tengah","Seputih Mataram, Lampung Tengah","Seputih Raman, Lampung Tengah","Seputih Surabaya, Lampung Tengah","Sidomulyo, Lampung Selatan","Simpang Pematang, Mesuji","Sragi, Lampung Selatan","Sukabumi, Bandar Lampung","Sukadana, Lampung Timur","Sukarame, Bandar Lampung","Sukau, Lampung Barat","Sukoharjo, Pringsewu","Sumber Jaya, Lampung Barat","Sumberejo, Tanggamus","Sungkai Barat, Lampung Utara","Sungkai Jaya, Lampung Utara","Sungkai Selatan, Lampung Utara","Sungkai Tengah, Lampung Utara","Sungkai Utara, Lampung Utara","Suoh, Lampung Barat","Talang Padang, Tanggamus","Tanjung Bintang, Lampung Selatan","Tanjung Karang Barat, Bandar Lampung","Tanjung Karang Pusat, Bandar Lampung","Tanjung Karang Timur, Bandar Lampung","Tanjung Raja, Lampung Utara","Tanjung Raya, Mesuji","Tanjung Senang, Bandar Lampung","Tanjungsari, Lampung Selatan","Tegineneng, Pesawaran","Teluk Betung Barat, Bandar Lampung","Teluk Betung Selatan, Bandar Lampung","Teluk Betung Timur, Bandar Lampung","Teluk Betung Utara, Bandar Lampung","Way Halim, Bandar Lampung"};
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    public static LatLng loctNow;
+    private final String[] kec = {"Abung Barat, Lampung Utara", "Abung Kunang, Lampung Utara", "Abung Pekurun, Lampung Utara", "Abung Selatan, Lampung Utara", "Abung Semuli, Lampung Utara", "Abung Surakarta, Lampung Utara", "Abung Tengah, Lampung Utara", "Abung Timur, Lampung Utara", "Abung Tinggi, Lampung Utara", "Adiluwih, Pringsewu", "Air Hitam, Lampung Barat", "Air Naningan, Tanggamus", "Ambarawa, Pringsewu", "Anak Ratu Aji, Lampung Tengah", "Anak Tuha, Lampung Tengah", "Bahuga, Way Kanan", "Bakauheni, Lampung Selatan", "Balik Bukit, Lampung Barat", "Bandar Mataram, Lampung Tengah", "Bandar Negeri Semuong, Tanggamus", "Bandar Negeri Suoh, Lampung Barat", "Bandar Sribhawono, Lampung Timur", "Bandar Surabaya, Lampung Tengah", "Bangunrejo, Lampung Tengah", "Banjar Agung, Tulang Bawang", "Banjar Baru, Tulang Bawang", "Banjar Margo, Tulang Bawang", "Banjit, Way Kanan", "Banyumas, Pringsewu", "Baradatu, Way Kanan", "Batanghari Nuban, Lampung Timur", "Batanghari, Lampung Timur", "Batu Brak, Lampung Barat", "Batu Ketulis, Lampung Barat", "Bekri, Lampung Tengah", "Belalau, Lampung Barat", "Bengkunat Belimbing, Pesisir Barat", "Bengkunat, Pesisir Barat", "Blambangan Pagar, Lampung Utara", "Blambangan Umpu, Way Kanan", "Braja Slebah, Lampung Timur", "Buay Bahuga, Way Kanan", "Bukit Kemuning, Lampung Utara", "Bulok, Tanggamus", "Bumi Agung, Lampung Timur", "Bumi Agung, Way Kanan", "Bumi Nabung, Lampung Tengah", "Bumi Ratu Nuban, Lampung Tengah", "Bumi Waras, Bandar Lampung", "Bunga Mayang, Lampung Utara", "Candipuro, Lampung Selatan", "Cukuh Balak, Tanggamus", "Dente Teladas, Tulang Bawang", "Enggal, Bandar Lampung", "Gading Rejo, Pringsewu", "Gadingrejo, Pringsewu", "Gedong Tataan, Pesawaran", "Gedung Aji Baru, Tulang Bawang", "Gedung Aji, Tulang Bawang", "Gedung Meneng, Tulang Bawang", "Gedung Surian, Lampung Barat", "Gisting, Tanggamus", "Gunung Agung, Tulang Bawang Barat", "Gunung Labuhan, Way Kanan", "Gunung Pelindung, Lampung Timur", "Gunung Sugih, Lampung Tengah", "Gunung Terang, Tulang Bawang Barat", "Hulu Sungkai, Lampung Utara", "Jabung, Lampung Timur", "Jati Agung, Lampung Selatan", "Kalianda, Lampung Selatan", "Kalirejo, Lampung Tengah", "Karya Penggawa, Pesisir Barat", "Kasui, Way Kanan", "Katibung, Lampung Selatan", "Kebun Tebu, Lampung Barat", "Kedamaian, Bandar Lampung", "Kedaton, Bandar Lampung", "Kedondong, Pesawaran", "Kelumbayan Barat, Tanggamus", "Kelumbayan, Tanggamus", "Kemiling, Bandar Lampung", "Ketapang, Lampung Selatan", "Ketimbang", "Kota Agung Barat, Tanggamus", "Kota Agung Pusat, Tanggamus", "Kota Agung Timur, Tanggamus", "Kota Gajah, Lampung Tengah", "Kotaagung, Tanggamus", "Kotabumi Kota, Lampung Utara", "Kotabumi Selatan, Lampung Utara", "Kotabumi Utara, Lampung Utara", "Krui Selatan, Pesisir Barat", "Labuhan Maringgai, Lampung Timur", "Labuhan Ratu, Bandar Lampung", "Labuhan Ratu, Lampung Timur", "Lambu Kibang, Tulang Bawang Barat", "Langkapura, Bandar Lampung", "Lemong, Pesisir Barat", "Limau, Tanggamus", "Lumbok Seminung, Lampung Barat", "Marga Punduh, Pesawaran", "Marga Sekampung, Lampung Timur", "Margatiga, Lampung Timur", "Mataram Baru, Lampung Timur", "Melinting, Lampung Timur", "Menggala Timur, Tulang Bawang", "Menggala, Tulang Bawang", "Meraksa Aji, Tulang Bawang", "Merbau Mataram, Lampung Selatan", "Mesuji Timur, Mesuji", "Mesuji, Mesuji", "Metro Barat, Metro", "Metro Kibang, Lampung Timur", "Metro Pusat, Metro", "Metro Selatan, Metro", "Metro Timur, Metro", "Metro Utara, Metro", "Muara Sungkai, Lampung Utara", "Natar, Lampung Selatan", "Negara Batin, Way Kanan", "Negeri Agung, Way Kanan", "Negeri Besar, Way Kanan", "Negeri Katon, Pesawaran", "Ngambur, Pesisir Barat", "Padang Cermin, Pesawaran", "Padang Ratu, Lampung Tengah", "Pagar Dewa, Lampung Barat", "Pagar Dewa, Tulang Bawang Barat", "Pagelaran Utara, Pringsewu", "Pagelaran, Pringsewu", "Pakuan Ratu, Way Kanan", "Palas, Lampung Selatan", "Panca Jaya, Mesuji", "Panjang, Bandar Lampung", "Pardasuka, Pringsewu", "Pasir Sakti, Lampung Timur", "Pekalongan, Lampung Timur", "Pematang Sawa, Tanggamus", "Penawar Aji, Tulang Bawang", "Penawar Tama, Tulang Bawang", "Penengahan, Lampung Selatan", "Pesisir Selatan, Pesisir Barat", "Pesisir Tengah, Pesisir Barat", "Pesisir Utara, Pesisir Barat", "Pringsewu, Pringsewu", "Pubian, Lampung Tengah", "Pugung, Tanggamus", "Pulau Panggung, Tanggamus", "Pulau Pisang, Pesisir Barat", "Punduh Pidada, Pesawaran", "Punggur, Lampung Tengah", "Purbolinggo, Lampung Timur", "Putra Rumbia, Lampung Tengah", "Rajabasa, Bandar Lampung", "Rajabasa, Lampung Selatan", "Raman Utara, Lampung Timur", "Rawa Jitu Utara, Mesuji", "Rawa Pitu, Tulang Bawang", "Rawajitu Selatan, Tulang Bawang", "Rawajitu Timur, Tulang Bawang", "Rebang Tangkas, Way Kanan", "Rumbia, Lampung Tengah", "Sekampung Udik, Lampung Timur", "Sekampung, Lampung Timur", "Sekincau, Lampung Barat", "Selagai Lingga, Lampung Tengah", "Semaka, Tanggamus", "Sendang Agung, Lampung Tengah", "Seputih Agung, Lampung Tengah", "Seputih Banyak, Lampung Tengah", "Seputih Mataram, Lampung Tengah", "Seputih Raman, Lampung Tengah", "Seputih Surabaya, Lampung Tengah", "Sidomulyo, Lampung Selatan", "Simpang Pematang, Mesuji", "Sragi, Lampung Selatan", "Sukabumi, Bandar Lampung", "Sukadana, Lampung Timur", "Sukarame, Bandar Lampung", "Sukau, Lampung Barat", "Sukoharjo, Pringsewu", "Sumber Jaya, Lampung Barat", "Sumberejo, Tanggamus", "Sungkai Barat, Lampung Utara", "Sungkai Jaya, Lampung Utara", "Sungkai Selatan, Lampung Utara", "Sungkai Tengah, Lampung Utara", "Sungkai Utara, Lampung Utara", "Suoh, Lampung Barat", "Talang Padang, Tanggamus", "Tanjung Bintang, Lampung Selatan", "Tanjung Karang Barat, Bandar Lampung", "Tanjung Karang Pusat, Bandar Lampung", "Tanjung Karang Timur, Bandar Lampung", "Tanjung Raja, Lampung Utara", "Tanjung Raya, Mesuji", "Tanjung Senang, Bandar Lampung", "Tanjungsari, Lampung Selatan", "Tegineneng, Pesawaran", "Teluk Betung Barat, Bandar Lampung", "Teluk Betung Selatan, Bandar Lampung", "Teluk Betung Timur, Bandar Lampung", "Teluk Betung Utara, Bandar Lampung", "Way Halim, Bandar Lampung"};
+    public String sellerUid = "";
+    @BindView(R.id.llSeller)
+    LinearLayout llSeller;
+    @BindView(R.id.rlUser)
+    RelativeLayout rlUser;
+    @BindView(R.id.actSellerAddressState)
+    AutoCompleteTextView actSellerAddressState;
+    private GoogleApiClient mGoogleApiClient;
+    private GoogleMap mMap;
+    private Runnable sendUpdatesToUI = this::showSettingDialog;
+    private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
 
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Objects.requireNonNull(intent.getAction()).matches(broadcastAction)) {
+                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    new Handler().postDelayed(sendUpdatesToUI, 10);
+                }
+
+            }
+        }
+    };
 
     @Nullable
     @Override
@@ -91,11 +108,11 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
             mapFragment.getMapAsync(this);
         }
 
-        if(FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("SLR - ")) {
+        if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("SLR - ")) {
             llSeller.setVisibility(View.VISIBLE);
             rlUser.setVisibility(View.GONE);
-            new Handler().postDelayed(() -> updateSellerLocation(sellerUid),2000);
-        }else if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("USR - ")){
+            new Handler().postDelayed(() -> updateSellerLocation(sellerUid), 2000);
+        } else if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("USR - ")) {
             llSeller.setVisibility(View.GONE);
             rlUser.setVisibility(View.VISIBLE);
         }
@@ -107,8 +124,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         return view;
     }
 
-    private void updateSellerLocation(String Id){
-        if(loctNow != null) {
+    private void updateSellerLocation(String Id) {
+        if (loctNow != null) {
             String sellerLocation = loctNow.latitude + "," + loctNow.longitude;
             DatabaseReference databaseReferenceDriver = FirebaseDatabase.getInstance().getReference(databasePathSeller);
             databaseReferenceDriver.child(Id).child("sellerLocation").setValue(sellerLocation);
@@ -129,8 +146,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        }
-        else {
+        } else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
@@ -200,20 +216,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         }
     }
 
-    private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Objects.requireNonNull(intent.getAction()).matches(broadcastAction)) {
-                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    new Handler().postDelayed(sendUpdatesToUI, 10);
-                }
-
-            }
-        }
-    };
-
     private void requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(Objects.requireNonNull(getActivity()), android.Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(getActivity(),
@@ -226,11 +228,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         }
     }
 
-    private Runnable sendUpdatesToUI = this::showSettingDialog;
-
-    private void moveToCurrentLocation(LatLng currentLocation)
-    {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,15));
+    private void moveToCurrentLocation(LatLng currentLocation) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
     }
 
     private void buildGoogleApiClient() {
@@ -246,8 +245,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
     }
-
-    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -296,7 +293,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         super.onResume();
         try {
             Objects.requireNonNull(getActivity()).registerReceiver(gpsLocationReceiver, new IntentFilter(broadcastAction));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -307,7 +304,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback,
         try {
             if (gpsLocationReceiver != null)
                 Objects.requireNonNull(getActivity()).unregisterReceiver(gpsLocationReceiver);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

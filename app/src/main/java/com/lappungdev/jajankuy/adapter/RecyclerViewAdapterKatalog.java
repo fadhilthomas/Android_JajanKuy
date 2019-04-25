@@ -58,12 +58,12 @@ public class RecyclerViewAdapterKatalog extends RecyclerView.Adapter<RecyclerVie
         return new ViewHolder(view);
     }
 
-    private String getMoney(String str2){
+    private String getMoney(String str2) {
         StringBuilder str = new StringBuilder(str2);
-        int idx = str.length()-3;
+        int idx = str.length() - 3;
 
-        while(idx > 0){
-            str.insert(idx,".");
+        while (idx > 0) {
+            str.insert(idx, ".");
             idx = idx - 3;
         }
 
@@ -100,6 +100,29 @@ public class RecyclerViewAdapterKatalog extends RecyclerView.Adapter<RecyclerVie
     public int getItemCount() {
 
         return menuList.size();
+    }
+
+    private void passDataUbah(int position) {
+        Intent i = new Intent(context, EditMenuActivity.class);
+        i.putExtra("menuName", menuList.get(position).getMenuName());
+        i.putExtra("menuPrice", menuList.get(position).getMenuPrice());
+        i.putExtra("menuCategory", menuList.get(position).getMenuCategory());
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
+    }
+
+    private void removeFile(String url) {
+        if (!url.contains("null")) {
+            System.out.println(url);
+            String urlStr = url.split("menu%2F")[1];
+            System.out.println(urlStr);
+            String urlStr2 = urlStr.split("\\?")[0];
+            System.out.println(urlStr2);
+            StorageReference fileDelete = FirebaseStorage.getInstance().getReference().child("menu/" + urlStr2);
+            fileDelete.delete().addOnSuccessListener(aVoid -> {
+
+            });
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -149,29 +172,6 @@ public class RecyclerViewAdapterKatalog extends RecyclerView.Adapter<RecyclerVie
 
                 Button c = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
                 c.setTextColor(ContextCompat.getColor(context, R.color.colorHitam));
-            });
-        }
-    }
-
-    private void passDataUbah(int position){
-        Intent i = new Intent(context, EditMenuActivity.class);
-        i.putExtra("menuName", menuList.get(position).getMenuName());
-        i.putExtra("menuPrice", menuList.get(position).getMenuPrice());
-        i.putExtra("menuCategory", menuList.get(position).getMenuCategory());
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
-    }
-
-    private void removeFile(String url){
-        if(!url.contains("null")) {
-            System.out.println(url);
-            String urlStr = url.split("menu%2F")[1];
-            System.out.println(urlStr);
-            String urlStr2 = urlStr.split("\\?")[0];
-            System.out.println(urlStr2);
-            StorageReference fileDelete = FirebaseStorage.getInstance().getReference().child("menu/" + urlStr2);
-            fileDelete.delete().addOnSuccessListener(aVoid -> {
-
             });
         }
     }

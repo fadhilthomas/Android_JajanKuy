@@ -1,8 +1,8 @@
 package com.lappungdev.jajankuy.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditMenuActivity extends AppCompatActivity {
 

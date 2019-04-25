@@ -1,12 +1,5 @@
 package com.lappungdev.jajankuy.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +10,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,24 +37,29 @@ import butterknife.ButterKnife;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    private DatabaseReference databaseReferenceMenu;
-    private List<Menu> menuList = new ArrayList<>();
-    @BindView(R.id.pb) ProgressBar pbLoad;
-    @BindView(R.id.llNotFound) LinearLayout llNotFound;
-    @BindView(R.id.recyclerView) RecyclerView recyclerView;
-    @BindView(R.id.tvCategoryTitle) TextView tvCategoryTitle;
-    @BindView(R.id.tvMenuSum) TextView tvMenuSum;
-    @BindView(R.id.spMenuSort) Spinner spMenuSort;
-    @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
     private static final String databasePathMenu = "jajankuy_db/menu";
-    private boolean itemSelected = false;
-    private boolean closest = false;
-
     @SuppressLint("StaticFieldLeak")
-    public static RecyclerViewAdapterCategory adapter ;
-
+    public static RecyclerViewAdapterCategory adapter;
     @SuppressLint("StaticFieldLeak")
     public static RelativeLayout svCategory;
+    @BindView(R.id.pb)
+    ProgressBar pbLoad;
+    @BindView(R.id.llNotFound)
+    LinearLayout llNotFound;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.tvCategoryTitle)
+    TextView tvCategoryTitle;
+    @BindView(R.id.tvMenuSum)
+    TextView tvMenuSum;
+    @BindView(R.id.spMenuSort)
+    Spinner spMenuSort;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    private DatabaseReference databaseReferenceMenu;
+    private List<Menu> menuList = new ArrayList<>();
+    private boolean itemSelected = false;
+    private boolean closest = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +83,13 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String itemSelect = parent.getItemAtPosition(position).toString();
-                if(itemSelected) {
+                if (itemSelected) {
                     if (itemSelect.contains("Jarak Terdekat")) {
                         Collections.sort(menuList, (o1, o2) -> {
                             int sComp = o1.getMenuMeter() - o2.getMenuMeter();
-                            if(sComp != 0){
+                            if (sComp != 0) {
                                 return sComp;
-                            }else {
+                            } else {
                                 Long id1 = Long.valueOf(o1.getMenuZID());
                                 Long id2 = Long.valueOf(o2.getMenuZID());
                                 return id1.compareTo(id2);
@@ -113,31 +118,31 @@ public class CategoryActivity extends AppCompatActivity {
         try {
             adapter.notifyDataSetChanged();
             swipeRefreshLayout.setRefreshing(false);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    private void getMenu(String name){
+    private void getMenu(String name) {
         databaseReferenceMenu = FirebaseDatabase.getInstance().getReference(databasePathMenu);
         Query queryMenu = databaseReferenceMenu.orderByChild("menuCategory").equalTo(name);
         queryMenu.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot menuSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot menuSnapshot : dataSnapshot.getChildren()) {
                     Menu menuInfo = menuSnapshot.getValue(Menu.class);
                     menuList.add(menuInfo);
                 }
                 adapter = new RecyclerViewAdapterCategory(getApplicationContext(), menuList);
                 try {
                     recyclerView.setAdapter(adapter);
-                    tvMenuSum.setText(String.format("%d Jajanan",menuList.size()));
-                }catch (NullPointerException e){
+                    tvMenuSum.setText(String.format("%d Jajanan", menuList.size()));
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
                 pbLoad.setVisibility(View.GONE);
-                if(menuList.isEmpty()){
+                if (menuList.isEmpty()) {
                     llNotFound.setVisibility(View.VISIBLE);
                 }
             }
@@ -151,8 +156,9 @@ public class CategoryActivity extends AppCompatActivity {
 
     public void upScroll(View view) {
         GridLayoutManager layoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
-        RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getBaseContext()){
-            @Override protected int getVerticalSnapPreference() {
+        RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getBaseContext()) {
+            @Override
+            protected int getVerticalSnapPreference() {
                 return LinearSmoothScroller.SNAP_TO_START;
             }
         };

@@ -8,16 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.lappungdev.jajankuy.R;
 
-import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SplashActivity extends AppCompatActivity {
 
-    @BindView(R.id.tvJudul) ImageView tvJudul;
-    @BindView(R.id.transContainer) ViewGroup transContainer;
+    @BindView(R.id.tvJudul)
+    ImageView tvJudul;
+    @BindView(R.id.transContainer)
+    ViewGroup transContainer;
     private boolean visibleJudul;
 
     @Override
@@ -33,12 +36,12 @@ public class SplashActivity extends AppCompatActivity {
             TransitionManager.beginDelayedTransition(transContainer);
             visibleJudul = !visibleJudul;
             tvJudul.setVisibility(visibleJudul ? View.VISIBLE : View.GONE);
-        },1000);
+        }, 1000);
 
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
-        },2000);
+        }, 2000);
 
     }
 }

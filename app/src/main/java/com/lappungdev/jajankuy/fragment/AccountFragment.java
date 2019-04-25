@@ -36,32 +36,32 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
+    private static final String databasePathSeller = "jajankuy_db/seller";
+    private static final String databasePathUser = "jajankuy_db/user";
     private String sellerPhone;
     private String sellerName;
     private String sellerState;
     private String userPhone;
     private String userName;
     private Typeface custom_font;
-    private static final String databasePathSeller = "jajankuy_db/seller";
-    private static final String databasePathUser = "jajankuy_db/user";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
-        custom_font = Typeface.createFromAsset(Objects.requireNonNull(getContext()).getAssets(),  "fonts/font.ttf");
+        custom_font = Typeface.createFromAsset(Objects.requireNonNull(getContext()).getAssets(), "fonts/font.ttf");
         DatabaseReference databaseReferenceSeller = FirebaseDatabase.getInstance().getReference(databasePathSeller);
         DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference(databasePathUser);
 
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             TextView tvSellerEmail = view.findViewById(R.id.tvSellerEmail);
             TextView tvSellerPhone = view.findViewById(R.id.tvSellerPhone);
             TextView tvSellerName = view.findViewById(R.id.tvSellerName);
             TextView tvSellerState = view.findViewById(R.id.tvSellerState);
             CircleImageView ivProfPrict = view.findViewById(R.id.ivProfPict);
             LinearLayout llState = view.findViewById(R.id.llState);
-            String name = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).replace("Shop - ","");
+            String name = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()).replace("Shop - ", "");
             String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             tvSellerName.setText(name);
             tvSellerEmail.setText(email);
@@ -69,17 +69,17 @@ public class AccountFragment extends Fragment {
             ivProfPrict.setBorderWidth(12);
             ivProfPrict.setBorderColor(Color.parseColor("#818181"));
 
-            if(FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("SLR - ")) {
+            if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName().contains("SLR - ")) {
                 try {
                     Glide.with(getContext()).load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivProfPrict);
                     loadSellerInfo();
                     String shopId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    if(sellerPhone.length() > 0){
+                    if (sellerPhone.length() > 0) {
                         tvSellerPhone.setText(sellerPhone);
                         tvSellerName.setText(sellerName);
                         tvSellerState.setText(sellerState);
-                    }else {
+                    } else {
                         Query query = databaseReferenceSeller.child(shopId);
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -102,17 +102,17 @@ public class AccountFragment extends Fragment {
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
-            }else{
+            } else {
                 try {
                     Glide.with(getContext()).load("https://firebasestorage.googleapis.com/v0/b/jajankuy-ina.appspot.com/o/user%2Fuser.png?alt=media&token=bd0832fa-6e8a-4a1e-910a-90bc87f4faf3").diskCacheStrategy(DiskCacheStrategy.ALL).into(ivProfPrict);
                     loadUserInfo();
                     llState.setVisibility(View.GONE);
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    if(userPhone.length() > 0){
+                    if (userPhone.length() > 0) {
                         tvSellerPhone.setText(userPhone);
                         tvSellerName.setText(userName);
-                    }else {
+                    } else {
                         Query query = databaseReferenceUser.child(userId);
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -168,18 +168,18 @@ public class AccountFragment extends Fragment {
         return view;
     }
 
-    private void loadSellerInfo(){
+    private void loadSellerInfo() {
         try {
             SharedPreferences sharedPref = Objects.requireNonNull(getContext()).getSharedPreferences("sellerInfo", 0);
-            sellerPhone = sharedPref.getString("sellerPhone","");
-            sellerName = sharedPref.getString("sellerName","");
-            sellerState = sharedPref.getString("sellerState","");
-        }catch (NullPointerException e){
+            sellerPhone = sharedPref.getString("sellerPhone", "");
+            sellerName = sharedPref.getString("sellerName", "");
+            sellerState = sharedPref.getString("sellerState", "");
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    private void saveSellerInfo(){
+    private void saveSellerInfo() {
         try {
             SharedPreferences sharedPref = Objects.requireNonNull(getContext()).getSharedPreferences("sellerInfo", 0);
             SharedPreferences.Editor editor = sharedPref.edit();
@@ -187,29 +187,29 @@ public class AccountFragment extends Fragment {
             editor.putString("sellerName", sellerName);
             editor.putString("sellerState", sellerState);
             editor.apply();
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadUserInfo(){
+    private void loadUserInfo() {
         try {
             SharedPreferences sharedPref = Objects.requireNonNull(getContext()).getSharedPreferences("userInfo", 0);
-            userPhone = sharedPref.getString("userPhone","");
-            userName = sharedPref.getString("userName","");
-        }catch (NullPointerException e){
+            userPhone = sharedPref.getString("userPhone", "");
+            userName = sharedPref.getString("userName", "");
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    private void saveUserInfo(){
+    private void saveUserInfo() {
         try {
             SharedPreferences sharedPref = Objects.requireNonNull(getContext()).getSharedPreferences("userInfo", 0);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("userPhone", userPhone);
             editor.putString("userName", userName);
             editor.apply();
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }

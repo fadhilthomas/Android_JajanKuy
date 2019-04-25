@@ -1,12 +1,5 @@
 package com.lappungdev.jajankuy.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,6 +16,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.AppUpdaterUtils;
@@ -50,14 +50,30 @@ import com.lappungdev.jajankuy.fragment.OrderFragment;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener{
+        GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
-    private GoogleApiClient mGoogleApiClient;
-    private GoogleMap mMap;
-    private LatLng lokasiNow;
     private static final String broadcastAction = "android.location.PROVIDERS_CHANGED";
     private static final int accessFineLocationIntent = 3;
     private static final int requestCheckSettings = 1;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private GoogleApiClient mGoogleApiClient;
+    private GoogleMap mMap;
+    private LatLng lokasiNow;
+    private boolean doubleBackToExitPressedOnce = false;
+    private Runnable sendUpdatesToUI = this::showSettingDialog;
+    private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Objects.requireNonNull(intent.getAction()).matches(broadcastAction)) {
+                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    new Handler().postDelayed(sendUpdatesToUI, 10);
+                }
+
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +114,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         appUpdaterUtils.start();
     }
 
-    private boolean doubleBackToExitPressedOnce = false;
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -110,13 +124,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
 
-        new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
@@ -139,8 +153,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return false;
     }
-
-
 
     private void initGoogleAPIClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -205,20 +217,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
-    private BroadcastReceiver gpsLocationReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Objects.requireNonNull(intent.getAction()).matches(broadcastAction)) {
-                LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    new Handler().postDelayed(sendUpdatesToUI, 10);
-                }
-
-            }
-        }
-    };
-
     private void requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(this,
@@ -232,14 +230,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
-    private Runnable sendUpdatesToUI = this::showSettingDialog;
-
     private void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();
         mGoogleApiClient.connect();
     }
-
-    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -308,31 +302,31 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void makananBerat(View view) {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
-        categoryIntent.putExtra("menuCategory","Makanan Berat");
+        categoryIntent.putExtra("menuCategory", "Makanan Berat");
         startActivity(categoryIntent);
     }
 
     public void makananRingan(View view) {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
-        categoryIntent.putExtra("menuCategory","Makanan Ringan");
+        categoryIntent.putExtra("menuCategory", "Makanan Ringan");
         startActivity(categoryIntent);
     }
 
     public void minumanPanas(View view) {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
-        categoryIntent.putExtra("menuCategory","Minuman Panas");
+        categoryIntent.putExtra("menuCategory", "Minuman Panas");
         startActivity(categoryIntent);
     }
 
     public void minumanDingin(View view) {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
-        categoryIntent.putExtra("menuCategory","Minuman Dingin");
+        categoryIntent.putExtra("menuCategory", "Minuman Dingin");
         startActivity(categoryIntent);
     }
 
     public void anekaKue(View view) {
         Intent categoryIntent = new Intent(this, CategoryActivity.class);
-        categoryIntent.putExtra("menuCategory","Aneka Kue");
+        categoryIntent.putExtra("menuCategory", "Aneka Kue");
         startActivity(categoryIntent);
     }
 }
