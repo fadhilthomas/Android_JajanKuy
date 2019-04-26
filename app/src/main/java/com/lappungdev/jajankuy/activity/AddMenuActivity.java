@@ -57,7 +57,6 @@ public class AddMenuActivity extends AppCompatActivity {
     private static final String databasePathSeller = "jajankuy_db/seller";
     private static final int cameraRequestCode = 100;
     private static final int imageRequestCodeMenu = 7;
-    private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private final String storagePathMenu = "menu/";
     @BindView(R.id.etMenuName)
     EditText etMenuName;

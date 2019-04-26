@@ -11,10 +11,14 @@ public class Seller {
     private String sellerPhone;
     private String sellerPhotoID;
     private String sellerPhotoPlace;
+    private String sellerSale;
     private String sellerZID;
     private int sellerMeter;
 
-    public Seller(String sellerAddressState, String sellerEmail, String sellerID, String sellerLicenseID, String sellerLocation, String sellerNIK, String sellerName, String sellerPhone, String sellerPhotoID, String sellerPhotoPlace, String sellerZID, int sellerMeter) {
+    public Seller() {
+    }
+
+    public Seller(String sellerAddressState, String sellerEmail, String sellerID, String sellerLicenseID, String sellerLocation, String sellerNIK, String sellerName, String sellerPhone, String sellerPhotoID, String sellerPhotoPlace, String sellerSale, String sellerZID, int sellerMeter) {
         this.setSellerAddressState(sellerAddressState);
         this.setSellerEmail(sellerEmail);
         this.setSellerID(sellerID);
@@ -25,6 +29,7 @@ public class Seller {
         this.setSellerPhone(sellerPhone);
         this.setSellerPhotoID(sellerPhotoID);
         this.setSellerPhotoPlace(sellerPhotoPlace);
+        this.setSellerSale(sellerSale);
         this.setSellerZID(sellerZID);
         this.setSellerMeter(sellerMeter);
     }
@@ -108,6 +113,14 @@ public class Seller {
 
     public void setSellerPhotoPlace(String sellerPhotoPlace) {
         this.sellerPhotoPlace = sellerPhotoPlace;
+    }
+
+    public String getSellerSale() {
+        return sellerSale;
+    }
+
+    public void setSellerSale(String sellerSale) {
+        this.sellerSale = sellerSale;
     }
 
     public String getSellerZID() {

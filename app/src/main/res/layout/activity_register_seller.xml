@@ -318,6 +318,26 @@
                                 android:background="@drawable/garis_2"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+
+                            <EditText
+                                android:id="@+id/etSellerSale"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/garis_2"
+                                android:hint="@string/makanan_yang_dijual"
+                                android:inputType="textCapWords"
+                                android:textColor="#454545"
+                                android:textColorHighlight="#454545"
+                                android:textColorHint="#454545"
+                                android:textColorLink="#454545"
+                                android:textSize="15sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

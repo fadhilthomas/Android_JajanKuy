@@ -81,6 +81,8 @@ public class RegisterSellerActivity extends AppCompatActivity {
     EditText etSellerName;
     @BindView(R.id.etSellerNIK)
     EditText etSellerNIK;
+    @BindView(R.id.etSellerSale)
+    EditText etSellerSale;
     @BindView(R.id.etSellerPhone)
     EditText etSellerPhone;
     @BindView(R.id.ivPlace)
@@ -272,9 +274,10 @@ public class RegisterSellerActivity extends AppCompatActivity {
         String sellerEmail = etSellerEmail.getText().toString();
         String sellerPhone = etSellerPhone.getText().toString();
         String sellerNIK = etSellerNIK.getText().toString();
+        String sellerSale = etSellerSale.getText().toString();
         String sellerLicenseID = etSellerLicenseID.getText().toString();
         String sellerAddressState = WordUtils.capitalizeFully(actKec.getText().toString());
-        Seller seller = new Seller(sellerAddressState, sellerEmail, sellerID, sellerLicenseID, "", sellerNIK, sellerName, sellerPhone, imgURLSeller, imgURLSeller, id, 0);
+        Seller seller = new Seller(sellerAddressState, sellerEmail, sellerID, sellerLicenseID, "", sellerNIK, sellerName, sellerPhone, imgURLSeller, imgURLSeller, sellerSale, id, 0);
         databaseReferenceSeller.child(id).setValue(seller);
     }
 
@@ -354,6 +357,7 @@ public class RegisterSellerActivity extends AppCompatActivity {
         String phone = etSellerPhone.getText().toString();
         String state = actKec.getText().toString();
         String nik = etSellerNIK.getText().toString();
+        String sale = etSellerSale.getText().toString();
 
 
         if (name.isEmpty()) {
@@ -394,6 +398,13 @@ public class RegisterSellerActivity extends AppCompatActivity {
             valid = false;
         } else {
             etSellerNIK.setError(null);
+        }
+        if (sale.isEmpty()) {
+            etSellerSale.setError("Makanan yang dijual belum diisi");
+            Snackbar.make(svDaftar, "Makanan yang dijual belum diisi.", Snackbar.LENGTH_SHORT).show();
+            valid = false;
+        } else {
+            etSellerSale.setError(null);
         }
         return valid;
     }
