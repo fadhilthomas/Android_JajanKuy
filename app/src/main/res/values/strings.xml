@@ -66,6 +66,8 @@
     <string name="maaf_menu_tidak_ditemukan">Maaf, menu tidak ditemukan.</string>
     <string name="katalog_menu">Katalog Menu</string>
     <string name="makanan_yang_dijual">Makanan Yang Dijual</string>
+    <string name="beli">Beli</string>
+    <string name="tidak_ada_pesanan">Tidak ada pesanan</string>
 
     <string-array name="kategori_menu">
         <item>Makanan Berat</item>

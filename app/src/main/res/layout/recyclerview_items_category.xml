@@ -14,7 +14,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="310dp"
+        android:layout_height="350dp"
         android:background="#fff">
 
         <ImageView
@@ -71,7 +71,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="2dp"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/llBtAction"
+            android:layout_marginBottom="5dp"
             android:id="@+id/llSeller">
 
             <LinearLayout
@@ -141,6 +142,27 @@
                     android:ellipsize="end"
                     android:id="@+id/tvMenuMeter"/>
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBtAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btBeli"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:text="@string/beli"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
