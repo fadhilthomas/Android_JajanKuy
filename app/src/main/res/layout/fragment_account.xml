@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,14 +15,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/akun"
-            android:textSize="22sp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/colorPutih"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:text="@string/akun"
+            android:textColor="@color/colorPutih"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -34,142 +34,142 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:focusable="true"
             android:background="@color/colorBgGrey"
-            android:focusableInTouchMode="true">
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardBackgroundColor="@color/colorPutih"
                 card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="5dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginTop="10dp"
                 card_view:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/ivProfPict"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal" />
 
                     <TextView
                         android:id="@+id/tvSellerName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorInfo"
-                        android:textSize="18sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
                         android:textAlignment="center"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="10dp"/>
+                        android:textColor="@color/colorInfo"
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_email"/>
+                            android:src="@drawable/ic_email" />
 
                         <TextView
                             android:id="@+id/tvSellerEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_phone"/>
+                            android:src="@drawable/ic_phone" />
 
                         <TextView
                             android:id="@+id/tvSellerPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:id="@+id/llState"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_shop_state"/>
+                            android:src="@drawable/ic_shop_state" />
 
                         <TextView
                             android:id="@+id/tvSellerState"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
 
@@ -180,30 +180,30 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="-10dp"
+                android:layout_marginEnd="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardBackgroundColor="@color/colorPutih"
                 card_view:cardCornerRadius="4dp"
                 card_view:cardElevation="5dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginTop="-10dp"
                 card_view:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:text="@string/ubah"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/ubah"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -212,139 +212,139 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardBackgroundColor="@color/colorPutih"
                 card_view:cardCornerRadius="5dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginTop="20dp"
                 card_view:cardElevation="5dp"
                 card_view:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_bantuan"/>
+                            android:src="@drawable/ic_bantuan" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:text="@string/bantuan"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginStart="20dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_ketentuan"/>
+                            android:src="@drawable/ic_ketentuan" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:text="@string/ketentuan"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginStart="20dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_privasi"/>
+                            android:src="@drawable/ic_privasi" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:text="@string/privasi"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginStart="20dp"/>
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#cccccc"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        android:background="#cccccc" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/ic_nilai"/>
+                            android:src="@drawable/ic_nilai" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorInfo"
-                            android:textSize="16sp"
-                            android:text="@string/nilai"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginStart="20dp"/>
+                            android:text="@string/nilai"
+                            android:textColor="@color/colorInfo"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -355,11 +355,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardBackgroundColor="@color/colorPutih"
                 card_view:cardCornerRadius="5dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
                 card_view:cardElevation="5dp"
                 card_view:cardUseCompatPadding="true">
 
@@ -367,21 +367,21 @@
                     android:id="@+id/llKeluar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorMerah"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:text="@string/keluar"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:text="@string/keluar"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorMerah"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 

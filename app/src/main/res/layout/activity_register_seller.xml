@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,230 +14,66 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register_seller"
-            android:textSize="22sp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/colorPutih"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:text="@string/register_seller"
+            android:textColor="@color/colorPutih"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/svDaftar"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:fitsSystemWindows="true"
-        android:id="@+id/svDaftar">
+        android:fitsSystemWindows="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardBackgroundColor="#fff"
                 card_view:cardCornerRadius="10dp"
                 card_view:cardElevation="5dp"
-                card_view:cardBackgroundColor="#fff"
-                android:foreground="?android:attr/selectableItemBackground"
                 card_view:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="#fff"
                     android:focusable="true"
-                    android:focusableInTouchMode="true">
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/llInfoAkun"
-                        android:visibility="gone"
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="24dp"
-                        android:paddingRight="24dp"
                         android:background="#fff"
-                        android:paddingBottom="10dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/info_akun"
-                            android:textSize="20sp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textStyle="bold"/>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp">
-                            <EditText
-                                android:id="@+id/etSellerLicenseID"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textCapWords"
-                                android:hint="@string/nomor_izin_berjualan"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
-                                android:textColor="#454545"
-                                android:background="@drawable/garis_2"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp">
-                            <EditText
-                                android:id="@+id/etSellerEmail"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textEmailAddress"
-                                android:hint="@string/email"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
-                                android:textColor="#454545"
-                                android:textColorHighlight="#454545"
-                                android:textColorLink="#454545"
-                                android:background="@drawable/garis_2"/>
-
-                            <TextView
-                                android:id="@+id/tvEmail"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorMerah"
-                                android:layout_marginStart="10dp"/>
-
-                            <androidx.appcompat.widget.AppCompatButton
-                                android:id="@+id/acbCheckEmail"
-                                android:layout_width="130dp"
-                                android:layout_height="30dp"
-                                android:layout_marginTop="5dp"
-                                android:text="@string/periksa_email"
-                                android:textSize="14sp"
-                                android:background="@drawable/rounded_button"
-                                android:textColor="#fff" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp">
-                            <EditText
-                                android:id="@+id/etPassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textPassword"
-                                android:hint="@string/kata_sandi"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
-                                android:textColor="#454545"
-                                android:background="@drawable/garis_2"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorMerah"
-                                android:layout_marginStart="10dp"
-                                android:text="@string/kata_sandi_desk"/>
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp">
-                            <EditText
-                                android:id="@+id/etRePassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textPassword"
-                                android:hint="@string/ulangi_kata_sandi"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
-                                android:textColor="#454545"
-                                android:background="@drawable/garis_2"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:baselineAligned="false">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_weight="1"
-                                android:layout_marginEnd="10dp">
-                                <androidx.appcompat.widget.AppCompatButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="5dp"
-                                    android:text="@string/sebelumnya"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp"
-                                    android:background="@drawable/rounded_button"
-                                    android:textColor="#fff"
-                                    android:onClick="sebelumnyaDaftar"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_weight="1"
-                                android:layout_marginStart="10dp">
-                                <androidx.appcompat.widget.AppCompatButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="5dp"
-                                    android:text="@string/daftar"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp"
-                                    android:background="@drawable/rounded_button"
-                                    android:textColor="#fff"
-                                    android:onClick="registerSeller"/>
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llInfoToko"
                         android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:paddingLeft="24dp"
                         android:paddingRight="24dp"
-                        android:background="#fff"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="10dp"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
                             android:layout_marginStart="5dp"
-                            android:text="@string/info_penjual"
-                            android:textSize="20sp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_akun"
                             android:textColor="@color/colorPrimaryDark"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -246,18 +81,188 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp">
+
+                            <EditText
+                                android:id="@+id/etSellerLicenseID"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/garis_2"
+                                android:hint="@string/nomor_izin_berjualan"
+                                android:inputType="textCapWords"
+                                android:textColor="#454545"
+                                android:textColorHint="#454545"
+                                android:textSize="15sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+
+                            <EditText
+                                android:id="@+id/etSellerEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/garis_2"
+                                android:hint="@string/email"
+                                android:inputType="textEmailAddress"
+                                android:textColor="#454545"
+                                android:textColorHint="#454545"
+                                android:textColorLink="#454545"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/colorMerah"
+                                android:textSize="12sp" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/acbCheckEmail"
+                                android:layout_width="130dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="@string/periksa_email"
+                                android:textColor="#fff"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+
+                            <EditText
+                                android:id="@+id/etPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/garis_2"
+                                android:hint="@string/kata_sandi"
+                                android:inputType="textPassword"
+                                android:textColor="#454545"
+                                android:textColorHint="#454545"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/kata_sandi_desk"
+                                android:textColor="@color/colorMerah"
+                                android:textSize="12sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+
+                            <EditText
+                                android:id="@+id/etRePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/garis_2"
+                                android:hint="@string/ulangi_kata_sandi"
+                                android:inputType="textPassword"
+                                android:textColor="#454545"
+                                android:textColorHint="#454545"
+                                android:textSize="15sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:baselineAligned="false"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/rounded_button"
+                                    android:onClick="sebelumnyaDaftar"
+                                    android:padding="5dp"
+                                    android:text="@string/sebelumnya"
+                                    android:textColor="#fff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/rounded_button"
+                                    android:onClick="registerSeller"
+                                    android:padding="5dp"
+                                    android:text="@string/daftar"
+                                    android:textColor="#fff"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llInfoToko"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:orientation="vertical"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/info_penjual"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp">
+
                             <EditText
                                 android:id="@+id/etSellerNIK"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textCapWords"
+                                android:background="@drawable/garis_2"
                                 android:hint="@string/nik_ktp"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
+                                android:inputType="textCapWords"
                                 android:textColor="#454545"
-                                android:textColorHighlight="#454545"
+                                android:textColorHint="#454545"
                                 android:textColorLink="#454545"
-                                android:background="@drawable/garis_2"/>
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -265,18 +270,18 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp">
+
                             <EditText
                                 android:id="@+id/etSellerName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textCapWords"
+                                android:background="@drawable/garis_2"
                                 android:hint="@string/nama_lengkap"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
+                                android:inputType="textCapWords"
                                 android:textColor="#454545"
-                                android:textColorHighlight="#454545"
+                                android:textColorHint="#454545"
                                 android:textColorLink="#454545"
-                                android:background="@drawable/garis_2"/>
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -284,19 +289,18 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp">
+
                             <AutoCompleteTextView
                                 android:id="@+id/actSellerAddressState"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="15sp"
-                                android:inputType="textCapWords"
+                                android:background="@drawable/garis_2"
                                 android:hint="@string/alamat_kecamatan"
-                                android:textColorHint="#454545"
-                                android:textColorHighlight="#454545"
-                                android:textColorLink="#454545"
+                                android:inputType="textCapWords"
                                 android:textColor="#454545"
-                                android:background="@drawable/garis_2">
-                            </AutoCompleteTextView>
+                                android:textColorHint="#454545"
+                                android:textColorLink="#454545"
+                                android:textSize="15sp"></AutoCompleteTextView>
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -304,18 +308,18 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp">
+
                             <EditText
                                 android:id="@+id/etSellerPhone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="phone"
+                                android:background="@drawable/garis_2"
                                 android:hint="@string/nomor_ponsel"
-                                android:textSize="15sp"
-                                android:textColorHint="#454545"
+                                android:inputType="phone"
                                 android:textColor="#454545"
-                                android:textColorHighlight="#454545"
+                                android:textColorHint="#454545"
                                 android:textColorLink="#454545"
-                                android:background="@drawable/garis_2"/>
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -332,7 +336,6 @@
                                 android:hint="@string/makanan_yang_dijual"
                                 android:inputType="textCapWords"
                                 android:textColor="#454545"
-                                android:textColorHighlight="#454545"
                                 android:textColorHint="#454545"
                                 android:textColorLink="#454545"
                                 android:textSize="15sp" />
@@ -341,123 +344,124 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="15dp"
-                            android:baselineAligned="false">
+                            android:baselineAligned="false"
+                            android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:padding="2dp"
                                 android:layout_weight="1"
+                                android:gravity="center"
                                 android:orientation="vertical"
-                                android:gravity="center">
+                                android:padding="2dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/foto_tempat_usaha"
                                     android:textAlignment="center"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/colorInfo"/>
+                                    android:textColor="@color/colorInfo"
+                                    android:textSize="14sp" />
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    android:onClick="uploadPlace"
+                                    card_view:cardBackgroundColor="#fff"
                                     card_view:cardCornerRadius="3dp"
                                     card_view:cardElevation="3dp"
-                                    card_view:cardBackgroundColor="#fff"
-                                    android:clickable="true"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    card_view:cardUseCompatPadding="true"
-                                    android:onClick="uploadPlace"
-                                    android:focusable="true">
+                                    card_view:cardUseCompatPadding="true">
 
                                     <RelativeLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:orientation="horizontal">
 
                                         <ImageView
                                             android:id="@+id/ivPlace"
-                                            android:background="#fff"
                                             android:layout_width="match_parent"
                                             android:layout_height="100dp"
-                                            android:src="@drawable/ic_add_img"
-                                            android:scaleType="center"
+                                            android:layout_alignEnd="@+id/btRemovePlace"
                                             android:layout_alignParentTop="true"
-                                            android:layout_alignEnd="@+id/btRemovePlace"/>
+                                            android:background="#fff"
+                                            android:scaleType="center"
+                                            android:src="@drawable/ic_add_img" />
 
                                         <ImageButton
-                                            android:visibility="gone"
                                             android:id="@+id/btRemovePlace"
-                                            android:onClick="removePlace"
                                             android:layout_width="20dp"
                                             android:layout_height="20dp"
                                             android:layout_alignParentTop="true"
                                             android:layout_alignParentEnd="true"
-                                            android:background="@drawable/ic_remove"/>
+                                            android:background="@drawable/ic_remove"
+                                            android:onClick="removePlace"
+                                            android:visibility="gone" />
 
                                     </RelativeLayout>
 
                                 </androidx.cardview.widget.CardView>
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:padding="2dp"
                                 android:layout_weight="1"
+                                android:gravity="center"
                                 android:orientation="vertical"
-                                android:gravity="center">
+                                android:padding="2dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/foto_diri"
                                     android:textAlignment="center"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/colorInfo"/>
+                                    android:textColor="@color/colorInfo"
+                                    android:textSize="14sp" />
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    android:onClick="uploadSeller"
+                                    card_view:cardBackgroundColor="#fff"
                                     card_view:cardCornerRadius="3dp"
                                     card_view:cardElevation="3dp"
-                                    card_view:cardBackgroundColor="#fff"
-                                    android:clickable="true"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    card_view:cardUseCompatPadding="true"
-                                    android:onClick="uploadSeller"
-                                    android:focusable="true">
+                                    card_view:cardUseCompatPadding="true">
 
                                     <RelativeLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:orientation="horizontal">
 
                                         <ImageView
                                             android:id="@+id/ivSeller"
-                                            android:background="#fff"
                                             android:layout_width="match_parent"
                                             android:layout_height="100dp"
-                                            android:src="@drawable/ic_add_img"
-                                            android:scaleType="center"
+                                            android:layout_alignEnd="@+id/btRemoveSeller"
                                             android:layout_alignParentTop="true"
-                                            android:layout_alignEnd="@+id/btRemoveSeller"/>
+                                            android:background="#fff"
+                                            android:scaleType="center"
+                                            android:src="@drawable/ic_add_img" />
 
                                         <ImageButton
-                                            android:visibility="gone"
                                             android:id="@+id/btRemoveSeller"
-                                            android:onClick="removeSeller"
                                             android:layout_width="20dp"
                                             android:layout_height="20dp"
                                             android:layout_alignParentTop="true"
                                             android:layout_alignParentEnd="true"
-                                            android:background="@drawable/ic_remove"/>
+                                            android:background="@drawable/ic_remove"
+                                            android:onClick="removeSeller"
+                                            android:visibility="gone" />
 
                                     </RelativeLayout>
 
@@ -469,44 +473,47 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_marginBottom="10dp"
-                            android:baselineAligned="false">
+                            android:baselineAligned="false"
+                            android:orientation="horizontal">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
+                                android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
-                                android:visibility="invisible"
-                                android:layout_marginEnd="10dp">
+                                android:gravity="center"
+                                android:visibility="invisible">
+
                                 <androidx.appcompat.widget.AppCompatButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:background="@drawable/rounded_button"
+                                    android:onClick="berikutnyaDaftar"
                                     android:padding="5dp"
                                     android:text="@string/berikutnya"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp"
-                                    android:background="@drawable/rounded_button"
                                     android:textColor="#fff"
-                                    android:onClick="berikutnyaDaftar"/>
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
+                                android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:layout_marginStart="10dp">
+                                android:gravity="center">
+
                                 <androidx.appcompat.widget.AppCompatButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:background="@drawable/rounded_button"
+                                    android:onClick="berikutnyaDaftar"
                                     android:padding="5dp"
                                     android:text="@string/berikutnya"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp"
-                                    android:background="@drawable/rounded_button"
                                     android:textColor="#fff"
-                                    android:onClick="berikutnyaDaftar"/>
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svKatalog"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/svKatalog">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/llTop"
@@ -14,61 +14,61 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/katalog_menu"
-            android:textSize="22sp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/colorPutih"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:text="@string/katalog_menu"
+            android:textColor="@color/colorPutih"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_below="@+id/llTop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llTop">
 
         <ProgressBar
+            android:id="@+id/pb"
+            style="?android:progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/pb"
-            android:indeterminate="true"
-            android:indeterminateTintMode="src_atop"
-            android:indeterminateTint="@color/colorPrimaryDark"
             android:layout_centerHorizontal="true"
-            style="?android:progressBarStyleLarge"/>
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:indeterminateTintMode="src_atop" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_not_found"/>
+                android:src="@drawable/ic_not_found" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
+                android:text="@string/maaf_menu_tidak_ditemukan"
                 android:textColor="@color/colorInfo"
-                android:text="@string/maaf_menu_tidak_ditemukan" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/recyclerView"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
+            android:layout_marginTop="10dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svCategory"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/svCategory">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/llTop"
@@ -15,22 +15,21 @@
             android:id="@+id/tvCategoryTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="22sp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/colorPutih"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:text=""
+            android:textColor="@color/colorPutih"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_below="@+id/llTop"
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_below="@+id/llTop">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -40,83 +39,83 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="#ecf1f4">
+                android:background="#ecf1f4"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="#fff"
-                    android:elevation="5dp">
+                    android:elevation="5dp"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal">
+
                         <TextView
-                            android:layout_gravity="center"
+                            android:id="@+id/tvMenuSum"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="15dp"
                             android:text="0 Jajanan"
                             android:textColor="#858585"
-                            android:textSize="16sp"
-                            android:id="@+id/tvMenuSum"
-                            android:layout_marginStart="15dp"/>
+                            android:textSize="16sp" />
 
                         <Spinner
                             android:id="@+id/spMenuSort"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginStart="100dp"
                             android:layout_marginTop="1dp"
+                            android:entries="@array/urut"
                             android:pointerIcon="arrow"
-                            android:spinnerMode="dialog"
-                            android:entries="@array/urut" />
+                            android:spinnerMode="dialog" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <ProgressBar
+                    android:id="@+id/pb"
+                    style="?android:progressBarStyleLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/pb"
                     android:layout_gravity="center"
                     android:indeterminate="true"
-                    android:indeterminateTintMode="src_atop"
                     android:indeterminateTint="@color/colorMerah"
-                    style="?android:progressBarStyleLarge"/>
+                    android:indeterminateTintMode="src_atop" />
 
                 <LinearLayout
+                    android:id="@+id/llNotFound"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:gravity="center"
-                    android:id="@+id/llNotFound"
+                    android:orientation="horizontal"
                     android:visibility="gone">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_not_found"/>
+                        android:src="@drawable/ic_not_found" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:textStyle="bold"
+                        android:text="Maaf, jajanan tidak ditemukan."
                         android:textSize="16sp"
-                        android:text="Maaf, jajanan tidak ditemukan." />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/recyclerView"
+                    android:clipToPadding="false"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:clipToPadding="false">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:paddingBottom="10dp"></androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
@@ -125,16 +124,16 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|center"
-            android:elevation="6dp"
             android:layout_marginEnd="10dp"
-            app:fabSize="normal"
+            android:layout_marginBottom="10dp"
+            android:elevation="6dp"
             android:onClick="upScroll"
+            android:src="@drawable/ic_arrow_up"
             app:backgroundTint="@color/colorMerah"
-            android:src="@drawable/ic_arrow_up"/>
+            app:fabSize="normal" />
     </RelativeLayout>
 
 
